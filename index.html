@@ -1,18 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Bootstrap -->
+    <title>Ferretería Los Maestros - Inicio</title>
+    
+    <!-- Bootstrap 5.3 CDN para diseño responsivo (Exigido en rúbrica) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- Iconos de Bootstrap para la interfaz y el Carrito -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     
-    <!-- Enlace a la Hoja de Estilos Externa de CSS Personalizado -->
+    <!-- Estilos personalizados para la marca de la ferretería -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Ferreteria Los Maestros </title>
-
 </head>
 <body>
+
+
+    <div id="navbar-placeholder"></div>
+
+
+    <header class="bg-light text-dark py-5 border-bottom">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <span class="badge bg-warning text-dark mb-3 px-3 py-2 fw-semibold">Desde La Serena</span  > 
+
+                    <h1 class="display-4 fw-bold mb-3">Ferretería Los Maestros</h1>
+                    <p class="lead text-muted mb-4">
+                        Con más de <strong>22 años de trayectoria</strong> en la Región de Coquimbo, somos una empresa familiar dedicada a proveer materiales de construcción, herramientas manuales y eléctricas de la más alta calidad para contratistas y constructores.
+                    </p>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <a href="productos.html" class="btn btn-warning btn-lg px-4 me-md-2 fw-bold text-dark">
+                            Ver Catálogo <i class="bi bi-arrow-right-short ms-1"></i>
+                        </a>
+                        <a href="nosotros.html" class="btn btn-outline-secondary btn-lg px-4">Conócenos</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <!-- Imagen de referencia relativa de la fachada -->
+                    <img src="assets/img/logo.png" class="img-fluid rounded-3 shadow-lg" alt="Ferretería Los Maestros en La Serena" style="max-height: 380px; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CUERPO PRINCIPAL DEL DOCUMENTO (<main>) -->
+    <main class="container my-5">
+
+        <!-- SECCIÓN 1: BUSCADOR DE STOCK EN TIEMPO REAL -->
+        <!-- Resuelve el dolor del colapso telefónico simulando consultas autónomas -->
+        <section id="buscador-seccion" class="mb-5 bg-white p-4 shadow-sm rounded border">
+            <div class="text-center mb-3">
+                <h2 class="h4 text-dark fw-bold">Consulta de Stock</h2>
+                <p class="text-muted small">Evita esperas telefónicas. Busca la disponibilidad de tus materiales de inmediato.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6">
+                    <div class="input-group">
+                        <span class="input-group-text bg-light"><i class="bi bi-search"></i></span>
+                        <input type="text" id="input-buscador" class="form-control" placeholder="Escribe el nombre del material (ej: cemento, fierro)...">
+                        <button class="btn btn-warning fw-bold text-dark" id="btn-buscar" type="button">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SECCIÓN 2: CATÁLOGO DE PRODUCTOS DESTACADOS -->
+        <!-- Muestra una lista de materiales con imagen, nombre y precio -->
+        <section id="productos-destacados" class="mb-5">
+            <div class="d-flex justify-content-between align-items-end mb-4 border-bottom pb-2">
+                <div>
+                    <h2 class="fw-bold mb-1">Materiales Destacados</h2>
+                    <p class="text-muted mb-0">Revisa los insumos más solicitados en obra gruesa y terminaciones</p>
+                </div>
+                <a href="productos.html" class="btn btn-link text-warning text-decoration-none fw-semibold">
+                    Ver catálogo completo <i class="bi bi-chevron-right small"></i>
+                </a>
+            </div>
+
+            <!-- Grilla Responsiva: 1 columna en celular, 2 en tablet, 4 en computador -->
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="contenedor-destacados">
+                
+                <!-- Producto 1: Cemento (Simulado) -->
+                <div class="col">
+                    <div class="card h-100 border shadow-sm">
+                        <img src="assets/img/cemento.jpg" class="card-img-top p-3" alt="Cemento Polpaico" style="height: 180px; object-fit: contain;">
+                        <div class="card-body d-flex flex-column">
+                            <span class="text-muted small mb-1">Obra Gruesa</span>
+                            <h3 class="card-title fw-bold text-dark h6">Cemento Especial Polpaico 25kg</h3>
+                            <p class="card-text text-muted small mb-3 flex-grow-1">Ideal para fabricar hormigones y morteros estructurales de alta resistencia.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="fw-bold text-dark fs-5">$4.890</span>
+                                <button class="btn btn-warning btn-sm text-dark fw-bold agregar-carro" data-id="CEM01" data-precio="4890" data-nombre="Cemento Polpaico 25kg">
+                                    <i class="bi bi-cart-plus"></i> Añadir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 2: Fierro (Simulado) -->
+                <div class="col">
+                    <div class="card h-100 border shadow-sm">
+                        <img src="assets/img/fierro.jpg" class="card-img-top p-3" alt="Fierro de Construcción" style="height: 180px; object-fit: contain;">
+                        <div class="card-body d-flex flex-column">
+                            <span class="text-muted small mb-1">Fierros y Perfiles</span>
+                            <h3 class="card-title fw-bold text-dark h6">Fierro Estriado 8mm x 6m</h3>
+                            <p class="card-text text-muted small mb-3 flex-grow-1">Fierro de alta ductilidad para el refuerzo seguro de hormigón armado.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="fw-bold text-dark fs-5">$6.250</span>
+                                <button class="btn btn-warning btn-sm text-dark fw-bold agregar-carro" data-id="FIE08" data-precio="6250" data-nombre="Fierro Estriado 8mm">
+                                    <i class="bi bi-cart-plus"></i> Añadir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 3: Pala (Simulado) -->
+                <div class="col">
+                    <div class="card h-100 border shadow-sm">
+                        <img src="assets/img/pala.jpg" class="card-img-top p-3" alt="Pala de Punta" style="height: 180px; object-fit: contain;">
+                        <div class="card-body d-flex flex-column">
+                            <span class="text-muted small mb-1">Herramientas Manuales</span>
+                            <h3 class="card-title fw-bold text-dark h6">Pala Punta Huevo con Cabo</h3>
+                            <p class="card-text text-muted small mb-3 flex-grow-1">Fabricada en acero templado resistente al desgaste con mango pulido de madera.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="fw-bold text-dark fs-5">$12.990</span>
+                                <button class="btn btn-warning btn-sm text-dark fw-bold agregar-carro" data-id="PAL01" data-precio="12990" data-nombre="Pala Punta Huevo">
+                                    <i class="bi bi-cart-plus"></i> Añadir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 4: Taladro (Simulado) -->
+                <div class="col">
+                    <div class="card h-100 border shadow-sm">
+                        <img src="assets/img/taladro.jpg" class="card-img-top p-3" alt="Taladro Percutor" style="height: 180px; object-fit: contain;">
+                        <div class="card-body d-flex flex-column">
+                            <span class="text-muted small mb-1">Herramientas Eléctricas</span>
+                            <h3 class="card-title fw-bold text-dark h6">Taladro Percutor Dewalt 650W</h3>
+                            <p class="card-text text-muted small mb-3 flex-grow-1">Potente velocidad variable y reversible para perforaciones exigentes en concreto.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-auto">
+                                <span class="fw-bold text-dark fs-5">$54.990</span>
+                                <button class="btn btn-warning btn-sm text-dark fw-bold agregar-carro" data-id="TAL02" data-precio="54990" data-nombre="Taladro Dewalt 650W">
+                                    <i class="bi bi-cart-plus"></i> Añadir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE VALOR SECUNDARIA (<aside>) -->
+        <!-- Destaca la transparencia de la Cuenta Corriente para Contratistas de forma semántica -->
+        <aside class="bg-dark text-white rounded-3 p-4 p-md-5 mb-5 shadow">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-8">
+                    <h3 class="fw-bold text-warning mb-2"><i class="bi bi-journal-check me-2"></i>¿Eres contratista con Cuenta Corriente?</h3>
+                    <p class="mb-3 text-light opacity-75">
+                        Digitalizamos el antiguo cuaderno de registros para darte una experiencia de compra transparente y fluida. Ahora podrás:
+                    </p>
+                    <ul class="list-unstyled text-muted small mb-0">
+                        <li class="mb-2 text-white"><i class="bi bi-check-circle-fill text-warning me-2"></i>Consultar tus saldos, abonos y deudas desde tu celular en la obra.</li>
+                        <li class="mb-2 text-white"><i class="bi bi-check-circle-fill text-warning me-2"></i>Reservar stock antes de desplazarte a la tienda física en La Serena.</li>
+                        <li class="mb-0 text-white"><i class="bi bi-check-circle-fill text-warning me-2"></i>Evitar discrepancias manuales a fin de mes.</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="registro.html" class="btn btn-warning btn-lg text-dark fw-bold px-4">Solicitar Cuenta</a>
+                </div>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- PIE DE PÁGINA SEMÁNTICO (Se inyecta con app.js) -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Bootstrap Bundle JS con Popper (Requerido para colapsar menús móviles) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
+    <!-- Enlaces lógicos para simulación e interactividad en memoria -->
+    <script src="assets/js/datos.js"></script>
+    <script src="assets/js/funciones.js"></script>
+    <script src="assets/js/app.js"></script>
 </body>
 </html>
