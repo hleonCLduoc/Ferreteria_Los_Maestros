@@ -5,9 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (placeholder) {
         placeholder.innerHTML = `
             <nav>
-                <a href="index.html">Catálogo y Stock</a> | 
+                <a href="index.html">Inicio</a> | 
+                <a href="#">Catálogo y Stock</a> | 
+
                 <a href="reservar.html">Reservar Materiales</a> | 
-                <a href="cuentas.html">Mi Cuenta Corriente</a>
+                <a href="#">Mi Cuenta Corriente</a>
             </nav>
         `;
     }
