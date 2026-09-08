@@ -1,0 +1,169 @@
+/* Configuración básica */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* Cabecera */
+header {
+    background-color: #0f64e4; /* Naranja */
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+/* Menú de navegación */
+nav {
+    background-color: #2c3e50; /* Azul oscuro */
+    color: #ffffff;
+    text-align: center;
+    padding: 12px;
+    font-weight: bold;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    color: #e67e22; /* Naranja al pasar el mouse */
+}
+
+/* Contenido principal */
+main {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 15px;
+}
+
+/* Sección de presentación */
+.extracto {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #dddddd;
+}
+
+.extracto h2, .catalogo h2 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+/* Contenedor de productos */
+.productos-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+/* Tarjetas individuales */
+.producto-tarjeta {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 15px;
+    width: 31%; /* Tres columnas */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.stock {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.disponible {
+    color: #27ae60; /* Verde */
+}
+
+.agotado {
+    color: #c0392b; /* Rojo */
+}
+
+/* Botón de reserva */
+.boton-reserva {
+    display: inline-block;
+    background-color: #e67e22;
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.boton-reserva:hover {
+    background-color: #d35400;
+}
+
+/* Pie de página */
+footer {
+    background-color: #111111;
+    color: #ffffff;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+/* Adaptación para celulares (Responsivo) */
+@media screen and (max-width: 768px) {
+    .producto-tarjeta {
+        width: 100%; /* Una sola columna en pantallas chicas */
+    }
+}
+
+/* Estilo para el Logo en el Header */
+.logo-img {
+    width: 200px; /* Tamaño del logo */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* Estilo para las imágenes de los productos */
+.producto-img {
+    width: 250px ;          /* Ocupa todo el ancho de la tarjeta */
+    height: 250px;        /* Altura fija para que todas se vean iguales */
+    object-fit: cover;    /* Recorta la imagen sin deformarla para que calce bien */
+    border-radius: 5px;   /* Esquinas suaves */
+    margin-bottom: 12px;
+}
+
+.banner-img{
+    width: 100%;
+
+}
+
+.banner-reserva {
+  display: flex;                /* Alinea los hijos en fila horizontal */
+  justify-content: space-between; /* Texto a un extremo, botón al otro */
+  align-items: center;          /* Centra verticalmente el texto con el botón */
+  gap: 20px;                    /* Espacio de separación entre texto y botón */
+  margin: 30px 0;               /* Margen arriba y abajo */
+}
+
+.texto-promo {
+  max-width: 60%;               /* Evita que el texto invada el espacio del botón */
+}
+
+.boton-contenedor img {
+  max-width: 250px;             /* Ajusta este tamaño al ancho que quieras para el botón */
+  height: auto;
+  display: block;
+}
