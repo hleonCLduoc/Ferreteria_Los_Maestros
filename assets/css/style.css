@@ -167,3 +167,60 @@ footer {
   height: auto;
   display: block;
 }
+
+/* ==========================================================================
+   ESTILOS PARA EL FORMULARIO (reservar.html)
+   ========================================================================== */
+.formulario-contenedor {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #dddddd;
+    max-width: 600px;
+    margin: 0 auto; /* Centra el formulario */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.grupo-formulario {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.grupo-formulario label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #1e272e;
+}
+
+.grupo-formulario input,
+.grupo-formulario select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+.grupo-formulario input:focus,
+.grupo-formulario select:focus {
+    border-color: #0072ff;
+    outline: none;
+}
+
+.boton-enviar {
+    background-color: #0072ff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.boton-enviar:hover {
+    background-color: #00c6ff;
+}

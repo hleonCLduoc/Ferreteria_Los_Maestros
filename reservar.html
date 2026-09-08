@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Ferretería Los Maestros - Reservar Materiales</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/app.js"></script>
+
+</head>
+<body>
+
+    <!-- CABECERA (Se mantiene idéntica) -->
+    <header>
+        <img src="assets/img/logo.png" alt="Logo de herramientas" class="logo-img">
+        <h1>Ferretería Los Maestros</h1>
+        <p>Atendido por sus propios dueños en La Serena - 22 años de trayectoria</p>
+    </header>
+
+    <!-- MENÚ DE NAVEGACIÓN (Notar que "Reservar Materiales" ahora no tiene enlace activo o puedes destacar visualmente) -->
+  <div id="navbar-placeholder"></div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+        
+        <!-- SECCIÓN DEL FORMULARIO -->
+        <section class="formulario-seccion">
+            <h2>Formulario de Reserva de Materiales</h2>
+            <p class="subtitulo-seccion">Completa tus datos y los materiales que necesitas asegurar. Te guardaremos el pedido por un máximo de 2 horas.</p>
+
+            <div class="formulario-contenedor">
+                <form id="formReserva">
+                    <!-- Campo Nombre -->
+                    <div class="grupo-formulario">
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" id="nombre" placeholder="Ej: Juan Pérez" required>
+                    </div>
+
+                    <!-- Campo RUT -->
+                    <div class="grupo-formulario">
+                        <label for="rut">RUT:</label>
+                        <input type="text" id="rut" placeholder="Ej: 12.345.678-9" required>
+                    </div>
+
+                    <!-- Campo Teléfono -->
+                    <div class="grupo-formulario">
+                        <label for="telefono">Teléfono de Contacto:</label>
+                        <input type="tel" id="telefono" placeholder="Ej: +56 9 1234 5678" required>
+                    </div>
+
+                    <!-- Selección de Producto -->
+                    <div class="grupo-formulario">
+                        <label for="producto">Seleccione el Material:</label>
+                        <select id="producto" required>
+                            <option value="">-- Seleccione un producto --</option>
+                            <option value="cemento">Cemento Polpaico 25kg ($5.490)</option>
+                            <option value="taladro">Taladro Percutor Bosch ($69.990)</option>
+                            <option value="pala">Pala Punta de Huevo ($12.990)</option>
+                        </select>
+                    </div>
+
+                    <!-- Cantidad -->
+                    <div class="grupo-formulario">
+                        <label for="cantidad">Cantidad:</label>
+                        <input type="number" id="cantidad" min="1" placeholder="Ej: 5" required>
+                    </div>
+
+                    <!-- Botón de Envío -->
+                    <button type="submit" class="boton-enviar">Confirmar Reserva</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA (Se mantiene idéntico) -->
+    <footer>
+        <div class="footer-contenedor">
+            <div class="footer-columna">
+                <h3>Ferretería Los Maestros</h3>
+                <p>22 años apoyando a los constructores de la Región de Coquimbo.</p>
+            </div>
+            <div class="footer-columna">
+                <h3>Contacto y Dirección</h3>
+                <p>📍 Av. Francisco de Aguirre #450, La Serena</p>
+                <p>📞 +56 51 223 4455</p>
+            </div>
+            <div class="footer-columna">
+                <h3>Horario de Atención</h3>
+                <p>Lunes a Viernes: 8:00 a 18:30 hrs</p>
+                <p>Sábado: 9:00 a 14:00 hrs</p>
+            </div>
+        </div>
+        <div class="footer-derechos">
+            <p>Desarrollado por [Nombre de tu Grupo] &copy; 2026</p>
+        </div>
+    </footer>
+
+    <!-- Script específico para validar el formulario -->
+    <script src="assets/js/funciones.js"></script>
+</body>
+</html>
