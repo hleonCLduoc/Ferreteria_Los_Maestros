@@ -46,20 +46,20 @@
     <!-- SCRIPT CON LA LÓGICA DE VALIDACIÓN Y LIMPIEZA -->
     <script>
         function procesarFormulario() {
-            // 1. OBTENEMOS LOS VALORES INGRESADOS POR EL USUARIO
+            //  OBTENEMOS LOS VALORES INGRESADOS POR EL USUARIO
             const correo = document.getElementById('input-email-contacto').value.trim();
             const formulario = document.getElementById('form-contacto');
 
             // VALIDA QUE EL CORREO TENGA FORMATO VÁLIDO (ejemplo@dominio.com)
             const patronCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            //COMPROBAMOS SI EL CORREO CUMPLE CON EL PATRÓN
+            //COMPROBAMOS SI EL CORREO CUMPLE 
             if (!patronCorreo.test(correo)) {
                 alert('Por favor, ingrese un correo electrónico válido (ejemplo: usuario@dominio.com).');
                 return; // DETIENE EL PROCESO SI ESTÁ MAL ESCRITO
             }
 
-            // 4. SI EL CORREO ESTÁ BIEN, MOSTRAR MENSAJE Y LIMPIAR EL FORMULARIO
+            // SI EL CORREO ESTÁ BIEN, MOSTRAR MENSAJE Y SE LIMPIA EL EL FORMULARO
             alert('¡Mensaje enviado con éxito!');
             formulario.reset(); // LIMPIA TODOS LOS CAMPOS DEL FORMULARIO
         }
