@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería Los Maestros - Administración de Usuarios</title>
+    <!-- VINCULACIÓN DE BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+    <!-- COMPONENTE  BARRA DE NAVEGACIÓN -->
+    <custom-navbar></custom-navbar>
+
+    <main class="container my-5 flex-grow-1">
+        <!-- ENCABEZADO Y BOTÓN DE NAVEGACIÓN -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold">GESTIÓN DE USUARIOS</h2>
+            <a href="admin-home.html" class="btn btn-outline-secondary fw-bold">VOLVER AL PANEL</a>
+        </div>
+
+        <!-- FORMULARIO PARA REGISTRAR O EDITAR USUARIOS -->
+        <div class="card shadow-sm border-0 p-4 mb-5">
+            <h4 class="card-title mb-3 fw-bold">FORMULARIO DE USUARIO</h4>
+            <form id="form-admin-usuario" novalidate>
+                <div class="row g-3">
+                    <!-- CAMPO: NOMBRE -->
+                    <div class="col-md-6">
+                        <label for="nombreUsuario" class="form-label fw-bold">NOMBRE COMPLETO</label>
+                        <input type="text" class="form-control" id="nombreUsuario" required>
+                    </div>
+                    <!-- CAMPO: CORREO -->
+                    <div class="col-md-6">
+                        <label for="emailUsuario" class="form-label fw-bold">CORREO ELECTRÓNICO</label>
+                        <input type="email" class="form-control" id="emailUsuario" required>
+                    </div>
+                    <!-- CAMPO: ROL -->
+                    <div class="col-md-6">
+                        <label for="rolUsuario" class="form-label fw-bold">ROL DEL USUARIO</label>
+                        <select class="form-select" id="rolUsuario" required>
+                            <option value="" selected disabled>SELECCIONAR ROL...</option>
+                            <option value="Cliente">CLIENTE</option>
+                            <option value="Administrador">ADMINISTRADOR</option>
+                        </select>
+                    </div>
+                    <!-- BOTÓN DE GUARDADO -->
+                    <div class="col-md-6 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary w-100 fw-bold">GUARDAR USUARIO</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- ACÁ UNA TABLA PARA LISTAR LOS REGISTRADOS -->
+        <div class="card shadow-sm border-0 p-4">
+            <h4 class="card-title mb-3 fw-bold">LISTADO DE USUARIOS</h4>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>NOMBRE</th>
+                            <th>CORREO</th>
+                            <th>ROL</th>
+                            <th class="text-center">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-usuarios">
+                        <!-- FILA DE EJEMPLO ESTÁTICA PARA PRUEBAS -->
+                        <tr>
+                            <td>1</td>
+                            <td>Ana Farmer</td>
+                            <td>ana.farmer@ejemplo.com</td>
+                            <td><span class="badge bg-danger">Administrador</span></td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-warning me-1">EDITAR</button>
+                                <button class="btn btn-sm btn-danger">ELIMINAR</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- COMPONENTE PIE DE PÁGINA -->
+    <custom-footer></custom-footer>
+
+    <!-- SCRIPTS DEL PROYECTO -->
+    <script src="assets/js/datos.js"></script>
+    <script src="assets/js/funciones.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería Los Maestros - Crear Cuenta</title>
+    <!-- BOOTSGTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+    <!--  BARRA DE NAVEGACIÓN -->
+    <custom-navbar></custom-navbar>
+
+    <main class="container my-5 flex-grow-1 d-flex justify-content-center align-items-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm border-0 p-4">
+                <!-- TÍTULO DE LA SECCIÓN -->
+                <div class="text-center mb-4">
+                    <h2 class="fw-bold">CREAR UNA CUENTA</h2>
+                    <p class="text-muted">REGÍSTRATE PARA REALIZAR COMPRAS Y VER TUS PEDIDOS</p>
+                </div>
+
+                <!--  AQUÍFORMULARIO DE REGISTRO CON VALIDACIÓN  -->
+                <form id="form-registro" novalidate>
+                    <!-- CAMPO: NOMBRE COMPLETO -->
+                    <div class="mb-3">
+                        <label for="nombreRegistro" class="form-label fw-bold">NOMBRE COMPLETO</label>
+                        <input type="text" class="form-control" id="nombreRegistro" placeholder="Ej. Ana Farmer" required>
+                        <div class="invalid-feedback">POR FAVOR INGRESA TU NOMBRE COMPLETO.</div>
+                    </div>
+
+                    <!-- CAMPO: CORREO ELECTRÓNICO -->
+                    <div class="mb-3">
+                        <label for="emailRegistro" class="form-label fw-bold">CORREO ELECTRÓNICO</label>
+                        <input type="email" class="form-control" id="emailRegistro" placeholder="nombre@ejemplo.com" required>
+                        <div class="invalid-feedback">INGRESA UN CORREO ELECTRÓNICO VÁLIDO.</div>
+                    </div>
+
+                    <!--  CONTRASEÑA -->
+                    <div class="mb-3">
+                        <label for="passRegistro" class="form-label fw-bold">CONTRASEÑA</label>
+                        <input type="password" class="form-control" id="passRegistro" placeholder="Mínimo 6 caracteres" minlength="6" required>
+                        <div class="invalid-feedback">LA CONTRASEÑA DEBE TENER AL MENOS 6 CARACTERES.</div>
+                    </div>
+
+                    <!-- CONFIRMAR CONTRASEÑA -->
+                    <div class="mb-4">
+                        <label for="confirmPassRegistro" class="form-label fw-bold">CONFIRMAR CONTRASEÑA</label>
+                        <input type="password" class="form-control" id="confirmPassRegistro" placeholder="Repite tu contraseña" required>
+                        <div class="invalid-feedback">AMBAS CONTRASEÑAS DEBEN COINCIDIR.</div>
+                    </div>
+
+                    <!-- BOTÓN ENVÍO -->
+                    <button type="submit" class="btn btn-primary w-100 fw-bold py-2 mb-3">REGISTRARME</button>
+
+                    <!-- ENLACE A LOGIN -->
+                    <div class="text-center">
+                        <small class="text-muted">¿YA TIENES UNA CUENTA? <a href="login.html" class="text-decoration-none fw-bold">INICIA SESIÓN AQUÍ</a></small>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- PIE DE PAINA -->
+    <custom-footer></custom-footer>
+
+    <!-- SCRIPTS DEL PROYECTO -->
+    <script src="assets/js/datos.js"></script>
+    <script src="assets/js/funciones.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

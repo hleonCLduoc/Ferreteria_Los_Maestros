@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería Los Maestros - Administración de Productos</title>
+    <!-- VINCULACIÓN DE BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+
+    <!-- COMPONENTE PERSONALIZADO: BARRA DE NAVEGACIÓN -->
+    <custom-navbar></custom-navbar>
+
+    <main class="container my-5 flex-grow-1">
+        <!-- ENCABEZADO Y BOTÓN DE NAVEGACIÓN -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fw-bold">GESTIÓN DE PRODUCTOS</h2>
+            <a href="admin-home.html" class="btn btn-outline-secondary fw-bold">VOLVER AL PANEL</a>
+        </div>
+
+        <!-- FORMULARIO PARA AGREGAR O EDITAR PRODUCTOS -->
+        <div class="card shadow-sm border-0 p-4 mb-5">
+            <h4 class="card-title mb-3 fw-bold">FORMULARIO DE PRODUCTO</h4>
+            <form id="form-admin-producto" novalidate>
+                <div class="row g-3">
+                    <!-- CAMPO: NOMBRE DEL PRODUCTO -->
+                    <div class="col-md-6">
+                        <label for="nombreProducto" class="form-label fw-bold">NOMBRE DEL PRODUCTO</label>
+                        <input type="text" class="form-control" id="nombreProducto" required>
+                    </div>
+                    <!-- CAMPO: PRECIO -->
+                    <div class="col-md-3">
+                        <label for="precioProducto" class="form-label fw-bold">PRECIO ($)</label>
+                        <input type="number" class="form-control" id="precioProducto" min="1" required>
+                    </div>
+                    <!-- CAMPO: STOCK -->
+                    <div class="col-md-3">
+                        <label for="stockProducto" class="form-label fw-bold">STOCK</label>
+                        <input type="number" class="form-control" id="stockProducto" min="0" required>
+                    </div>
+                    <!-- CAMPO: CATEGORÍA -->
+                    <div class="col-md-6">
+                        <label for="categoriaProducto" class="form-label fw-bold">CATEGORÍA</label>
+                        <select class="form-select" id="categoriaProducto" required>
+                            <option value="" selected disabled>SELECCIONAR CATEGORÍA...</option>
+                            <option value="Herramientas">HERRAMIENTAS</option>
+                            <option value="Materiales">MATERIALES</option>
+                            <option value="Maquinaria">MAQUINARIA</option>
+                        </select>
+                    </div>
+                    <!-- BOTÓN DE GUARDADO -->
+                    <div class="col-md-6 d-flex align-items-end">
+                        <button type="submit" class="btn btn-success w-100 fw-bold">GUARDAR PRODUCTO</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- TABLA PARA LISTAR LOS PRODUCTOS EN INVENTARIO -->
+        <div class="card shadow-sm border-0 p-4">
+            <h4 class="card-title mb-3 fw-bold">INVENTARIO DE PRODUCTOS</h4>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>PRODUCTO</th>
+                            <th>CATEGORÍA</th>
+                            <th>PRECIO</th>
+                            <th>STOCK</th>
+                            <th class="text-center">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-productos">
+                        <!-- FILA DE EJEMPLO ESTÁTICA PARA PRUEBAS -->
+                        <tr>
+                            <td>101</td>
+                            <td>Taladro Bosch</td>
+                            <td>Maquinaria</td>
+                            <td>$89.990</td>
+                            <td>15</td>
+                            <td class="text-center">
+                                <button class="btn btn-sm btn-warning me-1">EDITAR</button>
+                                <button class="btn btn-sm btn-danger">ELIMINAR</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- COMPONENTE PERSONALIZADO: PIE DE PÁGINA -->
+    <custom-footer></custom-footer>
+
+    <!-- SCRIPTS DEL PROYECTO -->
+    <script src="assets/js/datos.js"></script>
+    <script src="assets/js/funciones.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
