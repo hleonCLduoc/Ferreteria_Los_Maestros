@@ -1,85 +1,74 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>Ferretería Los Maestros - Catálogo</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería Los Maestros</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/app.js"></script>
-
 </head>
 <body>
 
-    <!-- CABECERA (Con tu Logo Local) -->
     <header>
-        <img src="assets/img/logo.png" alt="Logo de herramientas" class="logo-img">
+        <img src="assets/img/logo.png" alt="Logo" class="logo-img">
         <h1>Ferretería Los Maestros</h1>
         <p>Atendido por sus propios dueños en La Serena - 22 años de trayectoria</p>
     </header>
 
-    <!-- MENÚ DE NAVEGACIÓN -->
-  <div id="navbar-placeholder"></div>
+    <!-- Placeholder para inyectar la navbar desde funciones.js -->
+    <div id="navbar-placeholder"></div>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <main>
-        
-        <!-- SECCIÓN 1: HERO BANNER / SIMULACIÓN DE CARRUSEL -->
-         <div class="banner-reserva">
-  <!-- Bloque de texto a la izquierda -->
-  <div class="texto-promo">
-    <h2>¡Herramientas profesionales para tus proyectos!</h2>
-    <p>Asegura tus materiales reservando online y retira sin hacer filas en el mesón.</p>
-  </div>
-<a href="reservar.html">
-  <img src="assets/img/reservar.gif" alt="reservar-ahora" class="boton-reservar">
-</a>            </div>
 
-
-      
-
-        <!-- SECCIÓN 3: EL CATÁLOGO DE PRODUCTOS (Con tus fotos locales) -->
         <section class="catalogo">
             <h2>Disponibilidad de Materiales</h2>
-            <p class="subtitulo-seccion">Consulta nuestro stock disponible antes de dirigirte a nuestra tienda física:</p>
+            <p>Consulta nuestro stock disponible antes de dirigirte a nuestra tienda física:</p>
+                     <div class="banner-reserva">
+            <!-- Bloque de texto a la izquierda -->
+            <div class="texto-promo">
+                <h2>¡Herramientas profesionales para tus proyectos!</h2>
+                <p>Asegura tus materiales reservando online y retira sin hacer filas en el mesón.</p>
+            </div>
+            <a href="reservar.html">
+            <img src="assets/img/reservar.gif" alt="reservar-ahora" class="boton-reservar">
+            </a>            </div>
 
             <div class="productos-contenedor">
-                <!-- Producto 1 -->
+
                 <div class="producto-tarjeta">
-                    <img src="assets/img/Cemento-Polpaico-Constructor-Dumpex-www.paginaswebs.cl-.jpg" alt="Cemento" class="producto-img">
+                    <img src="assets/img/Cemento-Polpaico-Constructor-Dumpex-www.paginaswebs.cl-.jpg" alt="Cemento Polpaico" class="producto-img">
                     <h3>Cemento Polpaico 25kg</h3>
                     <p class="precio">$5.490</p>
                     <p class="stock disponible">Stock: 120 unidades</p>
                     <a href="reservar.html" class="boton-reserva">Reservar</a>
                 </div>
 
-                <!-- Producto 2 -->
                 <div class="producto-tarjeta">
-                    <img src="assets/img/taladrobosch.jpg" alt="Taladro Bosch" class="producto-img">
+                    <img src="assets/img/taladrobosch.jpg" alt="Taladro Percutor Bosch" class="producto-img">
                     <h3>Taladro Percutor Bosch</h3>
                     <p class="precio">$69.990</p>
                     <p class="stock disponible">Stock: 15 unidades</p>
                     <a href="reservar.html" class="boton-reserva">Reservar</a>
                 </div>
 
-                <!-- Producto 3 -->
                 <div class="producto-tarjeta">
-                    <img src="assets/img/pala_punta_huevo.jpg" alt="Pala" class="producto-img">
+                    <img src="assets/img/pala_punta_huevo.jpg" alt="Pala Punta de Huevo" class="producto-img">
                     <h3>Pala Punta de Huevo</h3>
                     <p class="precio">$12.990</p>
                     <p class="stock agotado">Agotado (Sin Stock)</p>
                 </div>
+
             </div>
         </section>
 
-        <!-- SECCIÓN 4: BANNER LARGO DE LIQUIDACIÓN (A la mitad/final de la página) -->
         <section class="banner-liquidacion">
-            <div class="liquidacion-contenido">
-                <span class="etiqueta-alerta">¡OFERTA DE LA SEMANA!</span>
-                <h2>Gran Liquidación de Herramientas Manuales</h2>
-                    <img src="assets/img/oferta.jpg" alt="Banner-oferta" class="banner-img">
-                <p>Hasta un <strong>30% de descuento</strong> en alicates, destornilladores y sets de llaves. Solo por compras con retiro en local hasta agotar stock.</p>
-            </div>
+            <span class="etiqueta-alerta">¡OFERTA DE LA SEMANA!</span>
+            <img src="assets/img/oferta.jpg" alt="Banner-oferta" class="banner-img">
+
+            <h2>Gran Liquidación de Herramientas Manuales</h2>
+            <p>Hasta un <strong>30% de descuento</strong> en alicates, destornilladores y sets de llaves. Solo por compras con retiro en local hasta agotar stock.</p>
+            
         </section>
+
         <section class="extracto">
             <h2>Sobre Nosotros</h2>
             <p>
@@ -89,28 +78,11 @@
 
     </main>
 
-    <!-- PIE DE PÁGINA (Estructura de tres columnas simple) -->
-    <footer>
-        <div class="footer-contenedor">
-            <div class="footer-columna">
-                <h3>Ferretería Los Maestros</h3>
-                <p>22 años apoyando a los constructores de la Región de Coquimbo.</p>
-            </div>
-            <div class="footer-columna">
-                <h3>Contacto y Dirección</h3>
-                <p>📍 Av. Francisco de Aguirre #450, La Serena</p>
-                <p>📞 +56 51 223 4455</p>
-            </div>
-            <div class="footer-columna">
-                <h3>Horario de Atención</h3>
-                <p>Lunes a Viernes: 8:00 a 18:30 hrs</p>
-                <p>Sábado: 9:00 a 14:00 hrs</p>
-            </div>
-        </div>
-        <div class="footer-derechos">
-            <p>Desarrollado por AFarmer & HLeon &copy; 2026</p>
-        </div>
-    </footer>
+    <!-- Placeholder para inyectar el footer desde funciones.js -->
+    <div id="footer-placeholder"></div>
+
+    <script src="assets/js/funciones.js"></script>
+    <script src="assets/js/app.js"></script>
 
 </body>
 </html>
