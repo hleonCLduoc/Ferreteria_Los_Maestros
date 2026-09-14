@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Ferretería Los Maestros</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <custom-navbar></custom-navbar>
+
+    <header>
+        <h1>Contacto</h1>
+        <p>¿Tienes dudas o necesitas una cotización especial?</p>
+    </header>
+
+    <main>
+        <div class="formulario-contenedor">
+            <form id="form-contacto">
+                <div class="grupo-formulario">
+                    <label for="input-nombre">Nombre completo:</label>
+                    <input id="input-nombre" type="text" placeholder="Ingrese su nombre">
+                </div>
+                
+                <div class="grupo-formulario">
+                    <label for="input-email-contacto">Correo electrónico:</label>
+                    <input id="input-email-contacto" type="email" placeholder="Ingrese su email">
+                </div>
+                
+                <div class="grupo-formulario">
+                    <label for="input-mensaje">Mensaje o Cotización:</label>
+                    <textarea id="input-mensaje" rows="4" placeholder="Escriba aquí los materiales que busca..." style="width: 100%; padding: 10px; border: 1px solid #cccccc; border-radius: 4px; font-family: inherit;"></textarea>
+                </div>
+                
+                <!-- LLAMAMOS A LA FUNCIÓN procesarFormulario() AL HACER CLIC -->
+                <button id="btn-enviar-contacto" type="button" class="boton-enviar" onclick="procesarFormulario()">Enviar mensaje</button>
+            </form>
+        </div>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <script src="assets/js/funciones.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <!-- SCRIPT CON LA LÓGICA DE VALIDACIÓN Y LIMPIEZA -->
+    <script>
+        function procesarFormulario() {
+            // 1. OBTENEMOS LOS VALORES INGRESADOS POR EL USUARIO
+            const correo = document.getElementById('input-email-contacto').value.trim();
+            const formulario = document.getElementById('form-contacto');
+
+            // VALIDA QUE EL CORREO TENGA FORMATO VÁLIDO (ejemplo@dominio.com)
+            const patronCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            //COMPROBAMOS SI EL CORREO CUMPLE CON EL PATRÓN
+            if (!patronCorreo.test(correo)) {
+                alert('Por favor, ingrese un correo electrónico válido (ejemplo: usuario@dominio.com).');
+                return; // DETIENE EL PROCESO SI ESTÁ MAL ESCRITO
+            }
+
+            // 4. SI EL CORREO ESTÁ BIEN, MOSTRAR MENSAJE Y LIMPIAR EL FORMULARIO
+            alert('¡Mensaje enviado con éxito!');
+            formulario.reset(); // LIMPIA TODOS LOS CAMPOS DEL FORMULARIO
+        }
+    </script>
+</body>
+</html>

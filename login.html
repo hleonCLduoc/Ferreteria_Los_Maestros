@@ -1,0 +1,102 @@
+<!-- AQUÍ DECLARO QUE ESTE DOCUMENTO ES DE TIPO HTML5 PARA QUE EL NAVEGADOR LO ENTIENDA Y LO LEA SIN PROBLEMAS -->
+<!DOCTYPE html>
+<!-- EMPIEZO MI DOCUMENTO HTML Y LE DIGO QUE EL IDIOMA PRINCIPAL ES ESPAÑOL ("ES") -->
+<html lang="es">
+<head>
+    <!-- EN ESTA SECCIÓN HEAD PONGO LAS CONFIGURACIONES INTERNAS DEL DOCUMENTO -->
+    
+    <!-- CON ESTO ME ASEGURO DE QUE LAS Ñ Y LOS TILDES SE VEAN BIEN EN LA PANTALLA -->
+    <meta charset="utf-8">
+    
+    <!-- ESTA LÍNEA ES CLAVE PARA QUE MI PÁGINA SEA RESPONSIVE Y SE ADAPTE A CUALQUJEIR PANTALLAS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ESTE ES EL TÍTULO QUE SE MOSTRARÁ EN LA PESTAÑA SUPERIOR DEL NAVEGADOR -->
+    <title>Iniciar Sesión - Ferretería Los Maestros</title>
+    
+    <!-- AQUÍ CONECTO HTML CON EL ARCHIVO CSS QUE CONTIENE LOS ESTILOS Y COLORES DE LA FERRETERÍA -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!--  ETIQUETA PERSONALIZADA OBLIGATORIA PARA MOSTRAR EL MENÚ DE NAVEGACIÓN -->
+    <custom-navbar></custom-navbar>
+
+    <!-- EL ENCABEZADO PRINCIPAL DE LA PÁGINA DEL LOGIN CON SU TÍTULO Y DESCRIPCIÓN -->
+    <header>
+        <h1>Iniciar sesión</h1>
+        <p>Ingresa a tu cuenta para gestionar tus reservas</p>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL DONDE UBICO EL FORMULARIO DE INGRESO -->
+    <main>
+        <!-- USO LA CLASE 'FORMULARIO-CONTENEDOR' DEL CSS PARA CENTRAR Y DARLE FORMATO A LA CAJA -->
+        <div class="formulario-contenedor">
+            
+            <!-- ENVOLVÍ LOS CAMPOS EN UN FORMULARIO Y LE ASIGNÉ UN ID PARA PODER LIMPIARLO FÁCILMENTE CON JAVASCRIPT -->
+            <form id="form-login">
+                
+                <!-- PRIMER GRUPO: CAMPO PARA INGRESO DEL CORREO -->
+                <div class="grupo-formulario">
+                    <label for="input-email">Correo Electrónico:</label>
+                    <!-- CAJA DE TEXTO TIPO EMAIL PARA RECIBIR LA DIRECCIÓN DEL USUARIO -->
+                    <input id="input-email" type="email" placeholder="Ingrese su email">
+                </div>
+                
+                <!-- SEGUNDO GRUPO: CAMPO PARA LA CONTRASEÑA -->
+                <div class="grupo-formulario">
+                    <label for="input-password">Contraseña:</label>
+                    <!-- EL TIPO 'PASSWORD' OCULTA EL TEXTO ESCRITO MOSTRANDO PUNTOS POR SEGURIDAD -->
+                    <input id="input-password" type="password" placeholder="Ingrese su contraseña">
+                </div>
+                
+                <!-- EL BOTÓN EJECUTA LA FUNCIÓN validarLogin() AL HACER CLIC MEDIANTE EL EVENTO ONCLICK -->
+                <button id="btn-inicio-sesion" type="button" class="boton-enviar" onclick="validarLogin()">Iniciar sesión</button> 
+            
+            </form>
+        </div>
+    </main>
+
+    <!--  ETIQUETA PERSONALIZADA OBLIGATORIA PARA EL PIE DE PÁGINA -->
+    <custom-footer></custom-footer>
+
+    <!-- CONECTO LOS SCRIPTS BASE DEL PROYECTO PARA ACTIVAR LOS COMPONENTES -->
+    <script src="assets/js/funciones.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <!-- BLOQUE DE JAVASCRIPT PARA VALIDAR LA INFORMACIÓN E INTERACTUAR CON EL USUARIO -->
+    <script>
+        // DEFINO LA FUNCIÓN QUE SE EJECUTARÁ CUANDO EL USUARIO PRESIONE EL BOTÓN DE INICIAR SESIÓN
+        function validarLogin() {
+            // CAPTURO EL VALOR DEL CORREO Y USO .TRIM() PARA QUITAR ESPACIOS EN BLANCO INNECESARIOS
+            const correo = document.getElementById('input-email').value.trim();
+            
+            // CAPTURO EL VALOR DE LA CONTRASEÑA INGRESADA
+            const password = document.getElementById('input-password').value.trim();
+            
+            // CAPTURO LA ESTRUCTURA DEL FORMULARIO COMPLETO MEDIANTE SU ID
+            const formulario = document.getElementById('form-login');
+
+            //  CREO LA EXPRESIÓN REGULAR QUE VERIFICA EL FORMATO CORRECTO DE UN CORREO (TEXTO @ DOMINIO . EXTENSIÓN)
+            const patronCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            //  PRIMERA VALIDACIÓN: COMPRUEBO SI EL CAMPO DE CORREO ESTÁ VACÍO O NO TIENE EL PATRÓN VÁLIDO
+            if (!patronCorreo.test(correo)) {
+                alert('Por favor, ingrese un correo electrónico válido (ejemplo: usuario@dominio.com).');
+                return; // EL RETURN DETIENE LA EJECUCIÓN PARA QUE EL CÓDIGO NO SIGA AVANZANDO
+            }
+
+            // SEGUNDA VALIDACIÓN: VERIFICO QUE EL CAMPO DE CONTRASEÑA NO HAYA QUEDADO EN BLANCO
+            if (password === '') {
+                alert('Por favor, ingrese su contraseña.');
+                return; // SE DETIENE SI FALTA LA CONTRASEÑA
+            }
+
+            // SI TODAS LAS COMPROBACIONES PASAN, MUESTRO EL MENSAJE DE ÉXITO AL USUARIO
+            alert('¡Sesión iniciada correctamente! BIENVENIDO.');
+
+            // EJECUTO EL MÉTODO RESET() SOBRE EL FORMULARIO PARA LIMPIAR LAS CAJAS DE TEXTO AUTOMÁTICAMENTE
+            formulario.reset();
+        }
+    </script>
+</body>
+</html>

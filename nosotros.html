@@ -1,0 +1,55 @@
+<!-- AQUÍ DECLARO QUE ESTE DOCUMENTO ES DE TIPO HTML5 PARA QUE EL NAVEGADOR LO ENTIENDA Y LO LEA SIN PROBLEMAS -->
+<!DOCTYPE html>
+<!-- EMPIEZO MI DOCUMENTO HTML Y LE DIGO QUE EL IDIOMA PRINCIPAL ES ESPAÑOL ("ES") -->
+<html lang="es">
+<head>
+    <!-- EN ESTA SECCIÓN HEAD PONGO LAS CONFIGURACIONES QUE NO SE VEN EN LA PÁGINA, PERO SON SÚPER IMPORTANTES -->
+    
+    <!-- CON ESTO ME ASEGURO DE QUE LAS Ñ Y LOS TILDES SE VEAN BIEN EN LA PANTALLA -->
+    <meta charset="utf-8">
+    
+    <!-- ESTA LÍNEA ES CLAVE PARA QUE KA PÁGINA SEA RESPONSIVE Y SE ADAPTE AL TAMAÑO DE LOS CELULARES -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ESTE ES EL TÍTULO QUE SE VA A VER ARRIBA EN LA PESTAÑA DEL NAVEGADOR -->
+    <title>Nosotros - Ferretería Los Maestros</title>
+    
+    <!-- AQUÍ CONECTO HTML CON EL ARCHIVO CSS  PARA QUELA PÁGINA TOME LOS COLORES Y ESTILOS DEL PROYECTO -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- ACÁ EMPIEZA EL BODY: TODO LO QUE  ESTÁ AQUIADENTRO ES LO QUE EL USUARIO VERÁ EN LA PANTALLA -->
+
+    <!-- ESTA ES LA ETIQUETA PERSONALIZADA PARA MOSTRAR EL MENÚ DE NAVEGACIÓN -->
+    <custom-navbar></custom-navbar>
+
+    <!-- USO EL HEADER PARA CREAR EL ENCABEZADO PRINCIPAL DE ESTA PÁGINA ESPECÍFICA -->
+    <header>
+        <!-- INSERTO EL LOGO DE LA FERRETERÍA Y LE PONGO UNA CLASE PARA QUE TOME ESTILO DESDE EL CSS -->
+        <img src="assets/img/logo.png" alt="Logo de herramientas" class="logo-img">
+        <!-- ESTE ES EL TÍTULO PRINCIPAL -->
+        <h1>Sobre Nosotros</h1>
+        <!-- UN PEQUEÑO SUBTÍTULO DESCRIPTIVO -->
+        <p>Conoce más sobre Ferretería Los Maestros</p>
+    </header>
+
+    <!-- DENTRO DEL MAIN ENGLOBARÉ EL CONTENIDO PRINCIPAL Y ÚNICO DE ESTA PÁGINA -->
+    <main>
+        <!-- CREO UNA SECCIÓN Y LE APLICO LA CLASE 'EXTRACTO' QUE ESTÁ EN EL CSS PARA DARLE UN BUEN ESTILO AL TEXTO -->
+        <section class="extracto">
+            <h2>Nuestra Historia</h2>
+            <p>
+                Somos un negocio familiar de la Región de Coquimbo dedicado a abastecer a los contratistas, maestros de obra y familias de La Serena con materiales de construcción de calidad y herramientas de confianza. 
+                Contamos con 22 años de trayectoria apoyando los proyectos de nuestra comunidad.
+            </p>
+        </section>
+    </main>
+
+    <!-- AL IGUAL QUE EL MENÚ, ESTA ES LA ETIQUETA EXIGIDA POR EL PROFESOR PARA MOSTRAR EL PIE DE PÁGINA -->
+    <custom-footer></custom-footer>
+    
+    <!-- AL FINAL DEL BODY CONECTO LOS ARCHIVOS JAVASCRIPT DE HUGO PARA QUE EL MENÚ Y EL FOOTER REALMENTE FUNCIONEN -->
+    <script src="assets/js/funciones.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
