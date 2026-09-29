@@ -1,28 +1,24 @@
-<!-- AQUÍ DECLARO QUE ESTE DOCUMENTO ES DE TIPO HTML5 PARA QUE EL NAVEGADOR LO ENTIENDA Y LO LEA SIN PROBLEMAS -->
 <!DOCTYPE html>
-<!-- EMPIEZO MI DOCUMENTO HTML Y LE DIGO QUE EL IDIOMA PRINCIPAL ES ESPAÑOL ("ES") -->
 <html lang="es">
 <head>
-    <!-- EN ESTA SECCIÓN HEAD PONGO LAS CONFIGURACIONES INTERNAS DEL DOCUMENTO -->
-    
-    <!-- CON ESTO ME ASEGURO DE QUE LAS Ñ Y LOS TILDES SE VEAN BIEN EN LA PANTALLA -->
-    <meta charset="utf-8">
-    
-    <!-- ESTA LÍNEA ES CLAVE PARA QUE MI PÁGINA SEA RESPONSIVE Y SE ADAPTE A CUALQUJEIR PANTALLAS -->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- ESTE ES EL TÍTULO QUE SE MOSTRARÁ EN LA PESTAÑA SUPERIOR DEL NAVEGADOR -->
-    <title>Iniciar Sesión - Ferretería Los Maestros</title>
-    
-    <!-- AQUÍ CONECTO HTML CON EL ARCHIVO CSS QUE CONTIENE LOS ESTILOS Y COLORES DE LA FERRETERÍA -->
+    <title>Ferretería Los Maestros</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <!--  ETIQUETA PERSONALIZADA OBLIGATORIA PARA MOSTRAR EL MENÚ DE NAVEGACIÓN -->
-    <custom-navbar></custom-navbar>
 
-    <!-- EL ENCABEZADO PRINCIPAL DE LA PÁGINA DEL LOGIN CON SU TÍTULO Y DESCRIPCIÓN -->
     <header>
+        <img src="assets/img/logo.png" alt="Logo" class="logo-img">
+        <h1>Ferretería Los Maestros</h1>
+        <p>Atendido por sus propios dueños en La Serena - 22 años de trayectoria</p>
+
+
+    <!-- Placeholder para inyectar la navbar desde funciones.js -->
+    <div id="navbar-placeholder"></div>
+
+
         <h1>Iniciar sesión</h1>
         <p>Ingresa a tu cuenta para gestionar tus reservas</p>
     </header>
@@ -57,11 +53,13 @@
     </main>
 
     <!--  ETIQUETA PERSONALIZADA OBLIGATORIA PARA EL PIE DE PÁGINA -->
-    <custom-footer></custom-footer>
+ <div id="footer-placeholder"></div>
+
 
     <!-- CONECTO LOS SCRIPTS BASE DEL PROYECTO PARA ACTIVAR LOS COMPONENTES -->
     <script src="assets/js/funciones.js"></script>
     <script src="assets/js/app.js"></script>
+
 
     <!-- BLOQUE DE JAVASCRIPT PARA VALIDAR LA INFORMACIÓN E INTERACTUAR CON EL USUARIO -->
     <script>
@@ -98,5 +96,6 @@
             formulario.reset();
         }
     </script>
+
 </body>
 </html>

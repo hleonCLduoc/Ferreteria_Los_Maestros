@@ -15,7 +15,8 @@ function cargarNavbar() {
         <a href="reservar.html">Reservar Materiales</a> |
         <a href="cuenta.html">Mi Cuenta Corriente</a> |
         <a href="nosotros.html">Nosotros</a> |
-        <a href="blog.html">Blog y Consejos</a>
+        <a href="blogs.html">Blog y Consejos</a> |
+        <a href="login.html">Iniciar Sesion</a>
 
       </nav>
     `;
