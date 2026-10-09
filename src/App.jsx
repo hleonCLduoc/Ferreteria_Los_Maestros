@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+//import { ProveedorCarrito } from "./context/ContextoCarrito";
 import { Header } from './components/Header';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -11,9 +12,12 @@ import { Blog } from './pages/Blog';
 import { Login } from './pages/Login';
 import { Registro } from './pages/Registro';
 import { AdminHome } from './pages/AdminHome';
+//import { Carrito } from "./pages/Carrito";
+
 
 export default function App() {
   return (
+   // <ProveedorCarrito>
     <BrowserRouter>
       <Header />
       <Navbar />
@@ -27,10 +31,13 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/admin" element={<AdminHome />} />
+
         </Routes>
       </main>
 
-      <Footer />
+    <Footer />
     </BrowserRouter>
+   // </ProveedorCarrito>
+
   );
 }
