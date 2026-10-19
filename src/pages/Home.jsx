@@ -4,7 +4,7 @@ import { productos } from '../data/productos';
 
 export const Home = () => {
   return (
-    <main>
+    <>
       {/* SECCIÓN CATÁLOGO Y DISPONIBILIDAD */}
       <section className="catalogo">
         <h2>Disponibilidad de Materiales</h2>
@@ -55,6 +55,6 @@ export const Home = () => {
           maestros de obra y familias de La Serena con materiales de construcción de calidad y herramientas de confianza.
         </p>
       </section>
-    </main>
+    </>
   );
 };

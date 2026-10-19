@@ -2,7 +2,6 @@ import { createContext, useContext, useState, useEffect } from 'react';
 
 const ContextoCarrito = createContext();
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useCarrito = () => useContext(ContextoCarrito);
 
 export const ProveedorCarrito = ({ children }) => {
@@ -16,13 +15,21 @@ export const ProveedorCarrito = ({ children }) => {
   }, [carrito]);
 
   const agregarAlCarrito = (producto) => {
+    if (!producto.disponible || producto.stock <= 0) return;
+
     setCarrito((prev) => {
       const existe = prev.find((item) => item.id === producto.id);
+
       if (existe) {
+        if (existe.cantidad >= producto.stock) return prev;
+
         return prev.map((item) =>
-          item.id === producto.id ? { ...item, cantidad: item.cantidad + 1 } : item
+          item.id === producto.id
+            ? { ...item, cantidad: item.cantidad + 1 }
+            : item
         );
       }
+
       return [...prev, { ...producto, cantidad: 1 }];
     });
   };
@@ -30,11 +37,15 @@ export const ProveedorCarrito = ({ children }) => {
   const actualizarCantidad = (id, cambio) => {
     setCarrito((prev) =>
       prev.map((item) => {
-        if (item.id === id) {
-          const nuevaCantidad = item.cantidad + cambio;
-          return nuevaCantidad > 0 ? { ...item, cantidad: nuevaCantidad } : item;
+        if (item.id !== id) return item;
+
+        const nuevaCantidad = item.cantidad + cambio;
+
+        if (nuevaCantidad < 1 || nuevaCantidad > item.stock) {
+          return item;
         }
-        return item;
+
+        return { ...item, cantidad: nuevaCantidad };
       })
     );
   };
@@ -47,10 +58,10 @@ export const ProveedorCarrito = ({ children }) => {
 
   const totalProductos = carrito.reduce((acc, item) => acc + item.cantidad, 0);
 
-  const precioTotal = carrito.reduce((acc, item) => {
-    const precioNumerico = parseInt(item.precio.replace(/[^0-9]/g, ''), 10) || 0;
-    return acc + precioNumerico * item.cantidad;
-  }, 0);
+  const precioTotal = carrito.reduce(
+    (acc, item) => acc + item.precioNumero * item.cantidad,
+    0
+  );
 
   return (
     <ContextoCarrito.Provider
