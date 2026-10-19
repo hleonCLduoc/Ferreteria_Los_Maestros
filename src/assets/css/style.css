@@ -1,4 +1,32 @@
 /* Configuración básica */
+.acceso-catalogo {
+  margin: 8px 0 28px;
+  text-align: center;
+}
+
+.filtro-catalogo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0 12px;
+  text-align: left;
+}
+
+.filtro-catalogo label {
+  font-weight: bold;
+}
+
+.filtro-catalogo select {
+  max-width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: white;
+  color: #2c3e50;
+  font: inherit;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -174,12 +202,13 @@ main {
 }
 
 .banner-liquidacion {
-  background-color: #ffffff;
   border: 1px solid #dddddd;
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
   text-align: center;
+  color: #0f64e4;
+  font-weight: bold;
 }
 
 .etiqueta-alerta {
@@ -425,3 +454,98 @@ footer,
   }
 }
 
+/* Paginación del catálogo */
+nav.paginacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-top: 24px;
+  padding: 12px 0;
+  background-color: transparent;
+}
+
+.paginacion button {
+  min-width: 40px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+  color: #2c3e50;
+  font: inherit;
+  cursor: pointer;
+}
+
+.paginacion button:hover:not(:disabled) {
+  background-color: #edf3fb;
+}
+
+.paginacion button.pagina-activa {
+  background-color: #0f64e4;
+  border-color: #0f64e4;
+  color: white;
+}
+
+.paginacion button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+/* Página Nosotros */
+.nosotros {
+  width: 100%;
+}
+
+.nosotros .extracto p + p {
+  margin-top: 12px;
+}
+
+/* Contenedor de la foto */
+.historia-tarjeta-wrap {
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 0 15px;
+  perspective: 1000px;
+}
+
+/* Tarjeta con efecto de inclinación */
+.historia-tarjeta {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+  transform-origin: top center;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.historia-foto {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Reflejo sobre la foto */
+.historia-tarjeta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3),
+    transparent 60%
+  );
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .historia-tarjeta:hover {
+    transform: rotateX(7deg) translateY(-6px);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.25);
+  }
+}

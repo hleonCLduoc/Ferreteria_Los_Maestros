@@ -2,7 +2,7 @@ export const productos = [
   {
     id: "MC001",
     codigo: "MC001",
-    categoria: "Materiales de Construcsción",
+    categoria: "Materiales de Construcción",
     subcategoria: "Cementos",
     nombre: "Cemento Polpaico gris 25 kg",
     marca: "Polpaico",
