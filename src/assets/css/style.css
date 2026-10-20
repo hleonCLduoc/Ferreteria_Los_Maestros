@@ -27,6 +27,17 @@
   font: inherit;
 }
 
+.filtro-catalogo input[type="text"] {
+  flex: 1;
+  min-width: 220px;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: white;
+  color: #2c3e50;
+  font: inherit;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

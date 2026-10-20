@@ -7,27 +7,31 @@ const categorias = [
 ];
 
 export const Catalogo = () => {
-  // Recordamos la categoría elegida y la página actual.
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
+  const [busqueda, setBusqueda] = useState('');
   const [paginaActual, setPaginaActual] = useState(1);
-
   const productosPorPagina = 15;
 
-  // Primero filtramos los productos por categoría.
-  const productosFiltrados = categoriaSeleccionada
-    ? productos.filter(
-        (producto) => producto.categoria === categoriaSeleccionada
-      )
-    : productos;
+  // Filtrado por categoría y texto (nombre, marca o código)
+  const productosFiltrados = productos.filter((producto) => {
+    const coincideCategoria = categoriaSeleccionada
+      ? producto.categoria === categoriaSeleccionada
+      : true;
 
-  // Después calculamos las páginas de ese resultado.
+    const termino = busqueda.toLowerCase().trim();
+    const coincideBusqueda =
+      producto.nombre.toLowerCase().includes(termino) ||
+      (producto.marca && producto.marca.toLowerCase().includes(termino)) ||
+      (producto.codigo && producto.codigo.toLowerCase().includes(termino));
+
+    return coincideCategoria && coincideBusqueda;
+  });
+
+  // Cálculo de paginación
   const totalPaginas = Math.ceil(
     productosFiltrados.length / productosPorPagina
   );
-
   const inicio = (paginaActual - 1) * productosPorPagina;
-
-  // Tomamos únicamente los productos de la página actual.
   const productosVisibles = productosFiltrados.slice(
     inicio,
     inicio + productosPorPagina
@@ -38,9 +42,21 @@ export const Catalogo = () => {
       <h2>Catálogo de productos</h2>
       <p>Encuentra herramientas y materiales para tus proyectos.</p>
 
+      {/* Controles de filtro y búsqueda */}
       <div className="filtro-catalogo">
-        <label htmlFor="categoria-productos">Categoría</label>
+        <label htmlFor="busqueda-productos">Buscar</label>
+        <input
+          id="busqueda-productos"
+          type="text"
+          placeholder="Buscar por nombre, marca o código..."
+          value={busqueda}
+          onChange={(evento) => {
+            setBusqueda(evento.target.value);
+            setPaginaActual(1);
+          }}
+        />
 
+        <label htmlFor="categoria-productos">Categoría</label>
         <select
           id="categoria-productos"
           value={categoriaSeleccionada}
@@ -50,7 +66,6 @@ export const Catalogo = () => {
           }}
         >
           <option value="">Todas las categorías</option>
-
           {categorias.map((categoria) => (
             <option key={categoria} value={categoria}>
               {categoria}
@@ -59,14 +74,12 @@ export const Catalogo = () => {
         </select>
       </div>
 
-      <p role="status">
-        {productosFiltrados.length} productos encontrados
-      </p>
+      <p role="status">{productosFiltrados.length} productos encontrados</p>
 
       {/* Productos de la página seleccionada */}
       <div className="productos-contenedor">
         {productosVisibles.map((producto) => (
-          <ProductCard key={producto.id} {...producto} />
+          <ProductCard key={producto.id || producto.codigo} {...producto} />
         ))}
       </div>
 
@@ -83,7 +96,6 @@ export const Catalogo = () => {
 
           {Array.from({ length: totalPaginas }, (_, indice) => {
             const numeroPagina = indice + 1;
-
             return (
               <button
                 key={numeroPagina}
