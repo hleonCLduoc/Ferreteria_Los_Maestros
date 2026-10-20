@@ -7,27 +7,27 @@ const categorias = [
 ];
 
 export const Catalogo = () => {
-  // Recordamos la categoría elegida y la página actual.
+
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
   const [paginaActual, setPaginaActual] = useState(1);
 
   const productosPorPagina = 15;
 
-  // Primero filtramos los productos por categoría.
+ 
   const productosFiltrados = categoriaSeleccionada
     ? productos.filter(
         (producto) => producto.categoria === categoriaSeleccionada
       )
     : productos;
 
-  // Después calculamos las páginas de ese resultado.
+  
   const totalPaginas = Math.ceil(
     productosFiltrados.length / productosPorPagina
   );
 
   const inicio = (paginaActual - 1) * productosPorPagina;
 
-  // Tomamos únicamente los productos de la página actual.
+
   const productosVisibles = productosFiltrados.slice(
     inicio,
     inicio + productosPorPagina
