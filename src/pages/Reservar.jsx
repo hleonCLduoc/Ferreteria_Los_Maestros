@@ -1,15 +1,26 @@
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import { useAut } from '../context/ContextoAutenticacion';
 
 export const Reservar = () => {
+  // 1. Traemos al usuario que está conectado actualmente
+  const { usuario } = useAut();
+
   const [formData, setFormData] = useState({
-    nombre: '',
-    rut: '',
+    // Si hay usuario, le ponemos sus datos por defecto. Si no, lo dejamos en blanco.
+    nombre: usuario ? usuario.razonSocial : '', 
+    rut: usuario ? usuario.rut : '',
     telefono: '',
     producto: 'Cemento Polpaico 25kg',
     cantidad: 1,
   });
 
   const [mensaje, setMensaje] = useState('');
+
+  // 2. Aquí está el candado: Si no hay nadie logueado, lo mandamos pa' fuera (al login)
+  if (!usuario) {
+    return <Navigate to="/login" replace />;
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,7 +47,7 @@ export const Reservar = () => {
           
           <form onSubmit={handleSubmit}>
             <div className="grupo-formulario">
-              <label>Nombre Completo:</label>
+              <label>Nombre Completo / Razón Social:</label>
               <input
                 type="text"
                 name="nombre"
@@ -70,7 +81,7 @@ export const Reservar = () => {
 
             <div className="grupo-formulario">
               <label>Producto a Reservar:</label>
-              <select name="producto" value={formData.producto} onChange={handleChange}>
+              <select name="producto" value={formData.producto} onChange={handleChange} style={{ width: '100%', padding: '8px' }}>
                 <option value="Cemento Polpaico 25kg">Cemento Polpaico 25kg</option>
                 <option value="Taladro Percutor Bosch">Taladro Percutor Bosch</option>
                 <option value="Pala Punta de Huevo">Pala Punta de Huevo</option>
@@ -85,10 +96,13 @@ export const Reservar = () => {
                 min="1"
                 value={formData.cantidad}
                 onChange={handleChange}
+                style={{ width: '100%', padding: '8px' }}
               />
             </div>
 
-            <button type="submit" className="boton-enviar">Confirmar Reserva</button>
+            <button type="submit" className="boton-enviar" style={{ padding: '10px 20px', backgroundColor: '#2563eb', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', marginTop: '10px' }}>
+              Confirmar Reserva
+            </button>
           </form>
         </div>
       </section>

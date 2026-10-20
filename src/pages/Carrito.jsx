@@ -18,16 +18,23 @@ export const Carrito = () => {
     precioTotal,
   } = useCarrito();
 
+  //  si el carrito está vacío
   if (carrito.length === 0) {
     return (
       <section className="extracto">
         <h2>Mi carrito</h2>
         <p>Tu carrito está vacío.</p>
-        <Link to="/">Ver productos</Link>
+        <Link 
+          to="/productos" 
+          style={{ padding: '10px 20px', backgroundColor: '#2563eb', color: 'white', textDecoration: 'none', borderRadius: '5px', display: 'inline-block', marginTop: '10px' }}
+        >
+          Ver productos
+        </Link>
       </section>
     );
   }
 
+  // Qué mostrar si hay productos
   return (
     <section className="extracto">
       <h2>Mi carrito</h2>
@@ -89,12 +96,33 @@ export const Carrito = () => {
       <p>Total de unidades: {totalProductos}</p>
       <h3>Total: {formatoPrecio(precioTotal)}</h3>
 
-      <button type="button" onClick={vaciarCarrito}>
-        Vaciar carrito
-      </button>
+      {/* --- agregue boton de navegacion  y pago  --- */}
+      <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', marginTop: '20px', flexWrap: 'wrap' }}>
+        <button 
+          type="button" 
+          onClick={vaciarCarrito}
+          style={{ padding: '10px 20px', backgroundColor: '#ef4444', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+        >
+          Vaciar carrito
+        </button>
 
-      <p>
-        <Link to="/">Seguir agregando productos</Link>
+        <Link 
+          to="/" 
+          style={{ padding: '10px 20px', backgroundColor: '#64748b', color: 'white', textDecoration: 'none', borderRadius: '5px' }}
+        >
+          Volver al Inicio
+        </Link>
+        
+        <button 
+          onClick={() => alert("¡Procesando pago...!")} 
+          style={{ padding: '10px 20px', backgroundColor: '#22c55e', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold' }}
+        >
+          Ir a Pagar
+        </button>
+      </div>
+
+      <p style={{ marginTop: '20px' }}>
+        <Link to="/productos">Seguir agregando productos</Link>
       </p>
     </section>
   );

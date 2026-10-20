@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ProveedorCarrito } from "./context/ContextoCarrito";
+import { ProveedorAut } from "./context/ContextoAutenticacion"; 
 import { Header } from "./components/Header";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
@@ -19,29 +20,32 @@ import { NotFound } from "./pages/NotFound";
 
 export default function App() {
   return (
-    <ProveedorCarrito>
-      <BrowserRouter>
-        <Header />
-        <Navbar />
+  
+    <ProveedorAut>
+      <ProveedorCarrito>
+        <BrowserRouter>
+          <Header />
+          <Navbar />
 
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/productos" element={<Catalogo />} />
-            <Route path="/reservar" element={<Reservar />} />
-            <Route path="/cuentas" element={<Cuentas />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/registro" element={<Registro />} />
-            <Route path="/admin" element={<AdminHome />} />
-            <Route path="/carrito" element={<Carrito />} />
-            <Route path="/nosotros" element={<Nosotros />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/productos" element={<Catalogo />} />
+              <Route path="/reservar" element={<Reservar />} />
+              <Route path="/cuentas" element={<Cuentas />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/registro" element={<Registro />} />
+              <Route path="/admin" element={<AdminHome />} />
+              <Route path="/carrito" element={<Carrito />} />
+              <Route path="/nosotros" element={<Nosotros />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
 
-        <Footer />
-      </BrowserRouter>
-    </ProveedorCarrito>
+          <Footer />
+        </BrowserRouter>
+      </ProveedorCarrito>
+    </ProveedorAut>
   );
 }
