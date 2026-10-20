@@ -102,6 +102,12 @@ it('Test 6 : ProductCard asigna la ruta e imagenes pasadas por props', ()=>{
 
 describe('Pruebas de estado y eventos', ()=>
 
-it('Test 7 : Actualiza el estado del input de correo al escribir en el login ')
+it('Test 7 : Actualiza el estado del input de correo al escribir en el login ', ()=> {
+    render(
+        <ProveedorAut></ProveedorAut>
+    )
+}
+
+)
 
 )
