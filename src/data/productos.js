@@ -21,7 +21,7 @@ export const productos = [
     marca: "Melón",
     precio: "$7.490",
     precioNumero: 7490,
-    stock: 40,
+    stock: 0,
     disponible: true,
     imagen: "/assets/img/mc002.jpg"
   },
