@@ -1,126 +1,139 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAut } from '../context/auth';
-import { productos } from '../data/productos';
-import { rutValido } from '../services/validaciones';
+import { useCarrito } from '../context/carrito';
+import { useProductos } from '../context/productos';
+import { useCompras } from '../context/compras';
+import { ResumenCompra } from '../components/ResumenCompra';
 export const Reservar = () => {
   const { usuario } = useAut();
-  const [form, setForm] = useState({
-    nombre: usuario.razonSocial,
-    rut: usuario.rut,
-    telefono: '',
-    producto: 'MC001',
-    cantidad: 1,
-  });
-  const [mensaje, setMensaje] = useState('');
-  const [error, setError] = useState('');
-  const seleccionado = productos.find((p) => p.id === form.producto);
+  const { productos } = useProductos();
+  const { carrito, vaciarCarrito } = useCarrito();
+  const { crearReserva } = useCompras();
+  const [params] = useSearchParams();
+  const navigate = useNavigate();
+  const desdeCarrito = params.get('carrito') === '1';
+  const [productoId, setProductoId] = useState(
+    params.get('producto') ||
+      productos.find((p) => p.id === 'MC001' && p.stock > 0)?.id ||
+      productos.find((p) => p.stock > 0)?.id ||
+      '',
+  );
+  const [cantidad, setCantidad] = useState(1),
+    [telefono, setTelefono] = useState(''),
+    [error, setError] = useState('');
+  const enviando = useRef(false);
+  const seleccionado = productos.find((p) => p.id === productoId);
+  const lineas = desdeCarrito
+    ? carrito
+    : seleccionado
+      ? [{ ...seleccionado, cantidad: Number(cantidad) || 1 }]
+      : [];
   const enviar = (e) => {
     e.preventDefault();
+    if (enviando.current) return;
+    enviando.current = true;
     setError('');
-    setMensaje('');
-    if (!form.nombre.trim() || !rutValido(form.rut)) {
-      setError('Revisa el nombre y RUT.');
-      return;
+    try {
+      const reserva = crearReserva({ productos: lineas, telefono });
+      if (desdeCarrito) vaciarCarrito();
+      navigate(`/confirmacion/reserva/${reserva.id}`, { replace: true });
+    } catch (e) {
+      setError(e.message);
+      enviando.current = false;
     }
-    const cantidad = Number(form.cantidad);
-    if (
-      !seleccionado?.disponible ||
-      !Number.isInteger(cantidad) ||
-      cantidad < 1 ||
-      cantidad > seleccionado.stock
-    ) {
-      setError('La cantidad debe estar dentro del stock disponible.');
-      return;
-    }
-    setMensaje(
-      `Reserva de demostración: ${cantidad} unidades de ${seleccionado.nombre} para ${form.nombre}. No se envió una reserva a la tienda.`,
-    );
   };
-  const cambiar = (e) => setForm({ ...form, [e.target.name]: e.target.value });
   return (
-    <section className="extracto">
-      <h2>Reserva de Materiales en Línea</h2>
-      <p>Formulario de demostración de reserva de materiales.</p>
-      <form className="formulario-contenedor" onSubmit={enviar}>
-        {error && (
-          <p role="alert" className="mensaje error">
-            {error}
+    <section>
+      <div className="encabezado-pagina">
+        <h2>Reserva tus materiales</h2>
+        <p>
+          Reserva por 24 horas.
+        </p>
+      </div>
+      <div className="compra-layout">
+        <form className="panel-proceso" onSubmit={enviar}>
+          <h3>
+            {desdeCarrito
+              ? 'Reservar los materiales del carrito'
+              : 'Materiales'}
+          </h3>
+          <p className="cliente-reserva">
+            Reserva a nombre de <strong>{usuario.razonSocial}</strong> ·{' '}
+            {usuario.rut}
           </p>
-        )}
-        {mensaje && (
-          <p role="status" className="mensaje">
-            {mensaje}
-          </p>
-        )}
-        <div className="grupo-formulario">
-          <label htmlFor="reserva-nombre">Nombre completo / Razón social</label>
-          <input
-            id="reserva-nombre"
-            name="nombre"
-            required
-            value={form.nombre}
-            onChange={cambiar}
-          />
-        </div>
-        <div className="grupo-formulario">
-          <label htmlFor="reserva-rut">RUT</label>
-          <input
-            id="reserva-rut"
-            name="rut"
-            required
-            value={form.rut}
-            onChange={cambiar}
-          />
-        </div>
-        <div className="grupo-formulario">
-          <label htmlFor="reserva-telefono">Teléfono de contacto</label>
-          <input
-            id="reserva-telefono"
-            name="telefono"
-            type="tel"
-            required
-            minLength={8}
-            maxLength={30}
-            value={form.telefono}
-            onChange={cambiar}
-          />
-        </div>
-        <div className="grupo-formulario">
-          <label htmlFor="reserva-producto">Producto a reservar</label>
-          <select
-            id="reserva-producto"
-            name="producto"
-            value={form.producto}
-            onChange={cambiar}
+          {!desdeCarrito && (
+            <>
+              <div className="grupo-formulario">
+                <label htmlFor="reserva-producto">Producto a reservar</label>
+                <select
+                  id="reserva-producto"
+                  value={productoId}
+                  onChange={(e) => {
+                    setProductoId(e.target.value);
+                    setCantidad(1);
+                  }}
+                >
+                  {productos
+                    .filter((p) => p.disponible && p.stock > 0)
+                    .map((p) => (
+                      <option key={p.id} value={p.id}>
+                        {p.nombre}
+                      </option>
+                    ))}
+                </select>
+              </div>
+              <div className="grupo-formulario">
+                <label htmlFor="reserva-cantidad">Cantidad</label>
+                <input
+                  id="reserva-cantidad"
+                  type="number"
+                  required
+                  min={1}
+                  max={seleccionado?.stock || 0}
+                  step={1}
+                  value={cantidad}
+                  onChange={(e) => setCantidad(e.target.value)}
+                />
+                <small>Disponibles: {seleccionado?.stock || 0} unidades.</small>
+              </div>
+            </>
+          )}
+          <div className="grupo-formulario">
+            <label htmlFor="reserva-telefono">Teléfono de contacto</label>
+            <input
+              id="reserva-telefono"
+              type="tel"
+              required
+              minLength={8}
+              maxLength={30}
+              value={telefono}
+              onChange={(e) => setTelefono(e.target.value)}
+              autoComplete="tel"
+              placeholder="+56 9 1234 5678"
+            />
+          </div>
+          <div className="informacion-retiro">
+            <strong>Retiro en tienda</strong>
+            <p>Av. Francisco de Aguirre #450, La Serena.</p>
+          </div>
+          {error && (
+            <p role="alert" className="mensaje error">
+              {error}
+            </p>
+          )}
+          <button className="boton-enviar" disabled={!lineas.length}>
+            Confirmar reserva · sin pago
+          </button>
+          <Link
+            className="enlace-volver"
+            to={desdeCarrito ? '/carrito' : '/productos'}
           >
-            {productos
-              .filter((p) => p.disponible && p.stock > 0)
-              .map((p) => (
-                <option key={p.id} value={p.id}>
-                  {p.nombre}
-                </option>
-              ))}
-          </select>
-          <p>Stock disponible: {seleccionado?.stock ?? 0}</p>
-        </div>
-        <div className="grupo-formulario">
-          <label htmlFor="reserva-cantidad">Cantidad</label>
-          <input
-            id="reserva-cantidad"
-            name="cantidad"
-            type="number"
-            required
-            min={1}
-            max={seleccionado?.stock ?? 0}
-            step={1}
-            value={form.cantidad}
-            onChange={cambiar}
-          />
-        </div>
-        <button type="submit" className="boton-enviar">
-          Confirmar reserva de prueba
-        </button>
-      </form>
+            Volver al {desdeCarrito ? 'carrito' : 'catálogo'}
+          </Link>
+        </form>
+        <ResumenCompra productos={lineas} titulo="Materiales a reservar" />
+      </div>
     </section>
   );
 };

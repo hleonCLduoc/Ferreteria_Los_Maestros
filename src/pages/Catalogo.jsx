@@ -1,12 +1,10 @@
 import { useState } from 'react';
 import { ProductCard } from '../components/ProductCard';
-import { productos } from '../data/productos';
-
-const categorias = [
-  ...new Set(productos.map((producto) => producto.categoria)),
-];
+import { useProductos } from '../context/productos';
 
 export const Catalogo = () => {
+  const { productos } = useProductos();
+  const categorias = [...new Set(productos.map((p) => p.categoria))];
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
   const [busqueda, setBusqueda] = useState('');
   const [paginaActual, setPaginaActual] = useState(1);
@@ -29,12 +27,12 @@ export const Catalogo = () => {
 
   // Cálculo de paginación
   const totalPaginas = Math.ceil(
-    productosFiltrados.length / productosPorPagina
+    productosFiltrados.length / productosPorPagina,
   );
   const inicio = (paginaActual - 1) * productosPorPagina;
   const productosVisibles = productosFiltrados.slice(
     inicio,
-    inicio + productosPorPagina
+    inicio + productosPorPagina,
   );
 
   return (
@@ -101,9 +99,7 @@ export const Catalogo = () => {
                 key={numeroPagina}
                 type="button"
                 onClick={() => setPaginaActual(numeroPagina)}
-                className={
-                  paginaActual === numeroPagina ? 'pagina-activa' : ''
-                }
+                className={paginaActual === numeroPagina ? 'pagina-activa' : ''}
                 aria-current={
                   paginaActual === numeroPagina ? 'page' : undefined
                 }

@@ -581,3 +581,150 @@ fieldset { border: 0; min-width: 0; }
  main { padding: 12px; }
  .filtro-catalogo input[type="text"] { min-width: 0; width: 100%; flex-basis: 100%; }
 }
+
+.aviso-prototipo { padding: 9px 12px; margin-bottom: 24px; border-bottom: 1px solid #dce3eb; color: #596879; font-size: 12px; text-align: center; }
+.encabezado-pagina { text-align: left; margin-bottom: 24px; }
+.encabezado-pagina h2, .acceso-intro h2 { color: #2c3e50; font-size: 30px; line-height: 1.2; margin: 8px 0 12px; }
+.etiqueta-seccion { color: #a94e11; font-size: 13px; font-weight: bold; }
+.acceso-layout { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 36px; padding: 18px 0; }
+.acceso-intro { text-align: left; padding: 30px 12px; }
+.acceso-intro ul { padding-left: 20px; margin-top: 24px; }
+.acceso-intro li { margin: 16px 0; }
+.panel-acceso, .panel-proceso { padding: 24px; background: white; border: 1px solid #ddd; border-radius: 6px; text-align: left; min-width: 0; }
+.panel-acceso > h3, .panel-proceso > h3, .panel-proceso form > h3 { color: #2c3e50; font-size: 21px; margin: 0 0 20px; }
+.pie-acceso { margin-top: 20px; text-align: center; }
+.acceso-demo { margin-top: 24px; padding-top: 20px; border-top: 1px solid #dde2e7; }
+.acceso-demo p { margin: 8px 0 16px; }
+.acceso-demo small { display: block; margin-top: 12px; overflow-wrap: anywhere; color: #596879; }
+.opcion-check { display: flex; align-items: center; gap: 8px; margin: 20px 0; font-size: 14px; }
+.opcion-check input, .opcion input { accent-color: #0f64e4; width: 18px; height: 18px; flex-shrink: 0; }
+.boton-secundario, .boton-peligro { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border: 1px solid #b2bfce; border-radius: 4px; background: white; color: #234d7c; text-decoration: none; font: inherit; cursor: pointer; }
+.boton-peligro { color: #a5261a; border-color: #d5a19b; }
+.boton-reserva { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+.boton-compra { background: #0f64e4; font-weight: bold; }
+.boton-enviar { min-height: 46px; margin-top: 16px; }
+.boton-enviar:hover:not(:disabled) { background: #0753bb; }
+.acciones { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 20px; }
+.acciones .enlace-boton { margin: 0; min-height: 44px; }
+.enlace-volver { display: block; margin-top: 18px; text-align: center; }
+.compra-layout { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.resumen-compra { background: white; border: 1px solid #ddd; border-radius: 6px; padding: 20px; text-align: left; min-width: 0; }
+.resumen-compra h3 { color: #2c3e50; margin-bottom: 20px; }
+.resumen-compra ul { list-style: none; }
+.resumen-compra li { display: flex; gap: 12px; align-items: center; border-bottom: 1px solid #e4e8ed; padding: 14px 0; font-size: 14px; }
+.resumen-compra li img { width: 48px; height: 48px; object-fit: contain; flex-shrink: 0; }
+.resumen-compra li > div { flex: 1; min-width: 0; }
+.resumen-compra li span { display: block; margin-top: 4px; color: #596879; }
+.resumen-compra li > strong { white-space: nowrap; }
+.total-compra { display: flex; justify-content: space-between; gap: 12px; font-size: 21px; margin-top: 20px; color: #2c3e50; }
+.pasos-compra { list-style: none; display: flex; gap: 12px; margin-bottom: 24px; }
+.pasos-compra li { flex: 1; padding: 12px 8px; background: #e6ebf1; border-radius: 4px; color: #526171; text-align: center; font-size: 14px; }
+.pasos-compra li.actual { background: #0f64e4; color: white; font-weight: bold; }
+.pasos-compra li.completo { background: #e2f0e7; color: #24613b; }
+.opciones-entrega { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+.opcion { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; border: 1px solid #ccd5df; border-radius: 5px; padding: 14px; cursor: pointer; font-size: 14px; }
+.opcion span { display: block; width: 100%; color: #596879; }
+.opcion.seleccionada { border-color: #0f64e4; box-shadow: 0 0 0 1px #0f64e4; background: #f1f6fc; }
+.metodos-pago { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+.metodos-pago legend { font-weight: bold; margin-bottom: 12px; }
+.entrega-resumida, .informacion-retiro { margin: 16px 0 24px; padding: 16px 0; border-top: 1px solid #e1e6ec; border-bottom: 1px solid #e1e6ec; }
+.informacion-retiro p + p { margin-top: 12px; }
+.cliente-reserva { margin-bottom: 24px; }
+.pago-prueba { margin: 20px 0; }
+.tarjeta-prueba { max-width: 320px; border: 1px solid #526e90; border-radius: 10px; padding: 20px; background: #2c3e50; color: white; margin-bottom: 20px; }
+.tarjeta-prueba strong { display: block; margin: 16px 0; letter-spacing: 2px; }
+.tarjeta-prueba span, .tarjeta-prueba small { display: block; font-size: 13px; }
+.pago-prueba fieldset label { display: inline-flex; align-items: center; gap: 8px; margin: 12px 20px 0 0; font-size: 14px; }
+.pago-prueba input { accent-color: #0f64e4; }
+.nota-prueba { font-size: 12px; text-align: center; color: #596879; margin-top: 16px; }
+.confirmacion-cabecera { text-align: center; max-width: 680px; margin: 0 auto 32px; }
+.confirmacion-icono { display: block; width: 58px; height: 58px; border-radius: 50%; background: #e0f0e5; color: #257147; margin: 0 auto 18px; font-size: 36px; line-height: 58px; }
+.confirmacion-cabecera h2 { color: #2c3e50; margin: 8px 0 16px; }
+.numero-operacion { margin-top: 16px; color: #596879; }
+.cuenta-menu { display: flex; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid #ccd6df; margin-bottom: 24px; padding-bottom: 12px; }
+.cuenta-menu button { padding: 12px 16px; border: 1px solid #ccd6df; background: white; border-radius: 4px; min-height: 44px; color: #2c3e50; }
+.cuenta-menu button[aria-pressed="true"] { color: white; background: #0f64e4; border-color: #0f64e4; }
+.indicadores-cuenta { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-bottom: 24px; }
+.indicadores-cuenta > div { padding: 20px; background: white; border: 1px solid #ddd; border-radius: 5px; text-align: left; }
+.indicadores-cuenta span { display: block; color: #596879; font-size: 14px; }
+.indicadores-cuenta strong { display: block; color: #2c3e50; font-size: 27px; margin: 10px 0; }
+.indicadores-cuenta button { padding: 0; border: 0; background: transparent; color: #1558a1; text-decoration: underline; min-height: 36px; text-align: left; }
+.cuenta-resumen { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; align-items: start; }
+.datos-cliente dt { color: #596879; font-size: 13px; margin-top: 18px; }
+.datos-cliente dd { font-weight: bold; margin-top: 4px; overflow-wrap: anywhere; }
+.registro-cuenta { padding: 20px; background: white; border: 1px solid #ddd; border-radius: 6px; text-align: left; margin-top: 18px; }
+.registro-cuenta > header { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; padding: 0 0 16px; background: transparent; color: #2c3e50; border-bottom: 1px solid #e1e6ec; }
+.registro-cuenta > header span:not(.estado) { display: block; font-size: 13px; color: #596879; margin-top: 4px; }
+.registro-resumen { display: flex; gap: 20px; justify-content: space-between; align-items: start; margin: 16px 0; }
+.registro-resumen p { flex: 1; }
+.registro-resumen > strong { white-space: nowrap; color: #2c3e50; }
+.estado { font-size: 12px; font-weight: bold; padding: 6px 10px; border-radius: 20px; white-space: nowrap; }
+.estado.positivo { background: #e2f1e7; color: #22663c; }
+.estado.pendiente { background: #fff1d5; color: #815515; }
+.estado.neutro { background: #e9edf1; color: #526171; }
+.registro-cuenta details { margin-top: 16px; }
+.registro-cuenta summary { cursor: pointer; color: #1558a1; min-height: 30px; }
+.registro-cuenta .resumen-compra { margin-top: 12px; }
+.estado-vacio { text-align: center; padding: 42px 24px; margin-top: 16px; background: white; border: 1px dashed #b9c8d8; border-radius: 6px; }
+.estado-vacio h4 { font-size: 22px; color: #2c3e50; margin-bottom: 12px; }
+.estado-vacio .boton-reserva { margin-top: 20px; }
+.lista-movimientos { list-style: none; }
+.lista-movimientos li { display: flex; gap: 12px; justify-content: space-between; border-bottom: 1px solid #e1e6ec; padding: 14px 0; font-size: 14px; }
+.lista-movimientos span { display: block; font-size: 12px; color: #596879; margin-top: 6px; }
+.lista-movimientos li > strong { white-space: nowrap; }
+.texto-positivo, .cuenta-al-dia { color: #22663c; }
+.confirmar-cancelacion { padding: 20px; border: 1px solid #dbbba0; border-radius: 5px; background: #fff7ed; text-align: left; margin: 20px 0; }
+@media (max-width: 767px) {
+ .acceso-layout, .compra-layout, .cuenta-resumen { grid-template-columns: 1fr; gap: 20px; }
+ .acceso-intro { padding: 4px 0; }
+ .acceso-intro ul { display: none; }
+ .panel-acceso, .panel-proceso, .resumen-compra { padding: 18px; }
+ .encabezado-pagina h2, .acceso-intro h2 { font-size: 26px; }
+ .opciones-entrega, .indicadores-cuenta { grid-template-columns: 1fr; }
+ .indicadores-cuenta > div { padding: 16px; }
+ .indicadores-cuenta strong { font-size: 25px; }
+ .cuenta-menu { display: grid; grid-template-columns: 1fr 1fr; }
+ .cuenta-menu button { padding: 10px 8px; font-size: 14px; }
+ .registro-resumen { flex-direction: column; gap: 8px; }
+ .resumen-compra li { flex-wrap: wrap; }
+ .resumen-compra li > strong { margin-left: 60px; }
+ .pasos-compra { gap: 6px; }
+ .pasos-compra li { font-size: 12px; padding: 12px 4px; }
+}
+
+.confirmacion-icono.inactivo { background: #e9edf1; color: #526171; }
+
+.acceso-cuenta { display: flex; flex-direction: column; gap: 20px; max-width: 520px; margin: 0 auto; }
+.acceso-cuenta > * { width: 100%; }
+.opcion-registro { padding-top: 4px; }
+.abrir-registro { display: flex; align-items: center; justify-content: space-between; width: 100%; text-align: left; }
+.abrir-registro span { font-size: 22px; line-height: 1; }
+.abrir-registro[aria-expanded="true"] { border-color: #e67e22; }
+.encabezado-acceso { text-align: center; max-width: 680px; margin: 0 auto 28px; }
+.acceso-cuenta .panel-acceso { height: 100%; }
+.acceso-cuenta .panel-registro { border-top: 3px solid #e67e22; }
+#inicio-sesion > .panel-acceso { border-top: 3px solid #0f64e4; }
+.panel-acceso > h3 { margin: 8px 0 12px; }
+.descripcion-acceso { margin-bottom: 24px; color: #596879; font-size: 14px; }
+.acceso-demo > strong { display: block; margin-bottom: 12px; }
+.persistencia-cuenta { max-width: 740px; font-size: 13px; text-align: center; color: #596879; margin: 24px auto 0; }
+.ayuda-formulario { font-size: 13px; color: #596879; margin-top: 12px; }
+.cabecera-cuenta { display: flex; gap: 20px; align-items: start; justify-content: space-between; }
+.acciones-cuenta { display: flex; flex-wrap: wrap; gap: 10px; justify-content: end; }
+.acciones-cuenta .boton-secundario { font-size: 14px; white-space: nowrap; }
+.tabla-cuentas { overflow-x: auto; }
+.tabla-cuentas table { border-collapse: collapse; width: 100%; font-size: 14px; }
+.tabla-cuentas caption { text-align: left; font-weight: bold; color: #2c3e50; margin-bottom: 16px; }
+.tabla-cuentas th, .tabla-cuentas td { border-bottom: 1px solid #dce2e9; padding: 14px 10px; text-align: left; vertical-align: middle; }
+.tabla-cuentas th { background: #f1f5f9; color: #2c3e50; }
+.tabla-cuentas td:not(:first-child) { white-space: nowrap; }
+.tabla-cuentas td small { display: block; color: #596879; font-size: 12px; margin-top: 4px; }
+.tabla-cuentas .boton-secundario { font-size: 13px; min-height: 40px; padding: 8px 12px; }
+.subtitulo-actividad { margin: 24px 0 12px; }
+.ayuda-admin { margin-top: 24px; text-align: center; color: #596879; }
+@media (max-width: 767px) {
+ .acceso-cuenta { grid-template-columns: 1fr; gap: 20px; }
+ .cabecera-cuenta { flex-direction: column; }
+ .acciones-cuenta { justify-content: start; }
+ .panel-acceso { padding: 20px; }
+}

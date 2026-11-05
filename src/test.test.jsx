@@ -52,7 +52,8 @@ describe('Pruebas de Renderizado', () => {
 
     expect(screen.getByText('Inicio')).toBeTruthy();
     expect(screen.getByText(/cat/i)).toBeTruthy();
-    expect(screen.getByText(/reservar/i)).toBeTruthy();
+    expect(screen.getByRole('link', { name: /mi cuenta/i })).toBeTruthy();
+    expect(screen.queryByRole('link', { name: /reservar/i })).toBeNull();
   });
 });
 

@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
-import { ProductCard } from "../components/ProductCard";
-import { productos } from "../data/productos";
+import { Link } from 'react-router-dom';
+import { ProductCard } from '../components/ProductCard';
+import { useProductos } from '../context/productos';
 
 export const Home = () => {
-  const destacados = ["MC001", "HE001", "JA004"]
+  const { productos } = useProductos();
+  const destacados = ['MC001', 'HE001', 'JA004']
     .map((id) => productos.find((producto) => producto.id === id))
     .filter(Boolean);
 

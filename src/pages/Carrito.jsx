@@ -24,9 +24,17 @@ export const Carrito = () => {
       <section className="extracto">
         <h2>Mi carrito</h2>
         <p>Tu carrito está vacío.</p>
-        <Link 
-          to="/productos" 
-          style={{ padding: '10px 20px', backgroundColor: '#2563eb', color: 'white', textDecoration: 'none', borderRadius: '5px', display: 'inline-block', marginTop: '10px' }}
+        <Link
+          to="/productos"
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#2563eb',
+            color: 'white',
+            textDecoration: 'none',
+            borderRadius: '5px',
+            display: 'inline-block',
+            marginTop: '10px',
+          }}
         >
           Ver productos
         </Link>
@@ -50,9 +58,7 @@ export const Carrito = () => {
 
             <h3>{producto.nombre}</h3>
 
-            <p>
-              Precio unitario: {formatoPrecio(producto.precioNumero)}
-            </p>
+            <p>Precio unitario: {formatoPrecio(producto.precioNumero)}</p>
 
             <div>
               <button
@@ -78,9 +84,7 @@ export const Carrito = () => {
 
             <p>
               Subtotal:{' '}
-              {formatoPrecio(
-                producto.precioNumero * producto.cantidad
-              )}
+              {formatoPrecio(producto.precioNumero * producto.cantidad)}
             </p>
 
             <button
@@ -97,28 +101,49 @@ export const Carrito = () => {
       <h3>Total: {formatoPrecio(precioTotal)}</h3>
 
       {/* --- agregue boton de navegacion  y pago  --- */}
-      <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', marginTop: '20px', flexWrap: 'wrap' }}>
-        <button 
-          type="button" 
+      <div
+        style={{
+          display: 'flex',
+          gap: '15px',
+          justifyContent: 'center',
+          marginTop: '20px',
+          flexWrap: 'wrap',
+        }}
+      >
+        <button
+          type="button"
           onClick={vaciarCarrito}
-          style={{ padding: '10px 20px', backgroundColor: '#ef4444', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#ef4444',
+            color: 'white',
+            border: 'none',
+            borderRadius: '5px',
+            cursor: 'pointer',
+          }}
         >
           Vaciar carrito
         </button>
 
-        <Link 
-          to="/" 
-          style={{ padding: '10px 20px', backgroundColor: '#64748b', color: 'white', textDecoration: 'none', borderRadius: '5px' }}
+        <Link
+          to="/"
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#64748b',
+            color: 'white',
+            textDecoration: 'none',
+            borderRadius: '5px',
+          }}
         >
           Volver al Inicio
         </Link>
-        
-        <button 
-          onClick={() => alert("Simulación de pago completada. No se realizó ningún cobro.")} 
-          style={{ padding: '10px 20px', backgroundColor: '#22c55e', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold' }}
-        >
-          Ir a Pagar
-        </button>
+
+        <Link to="/pago" className="boton-reserva boton-compra">
+          Continuar compra
+        </Link>
+        <Link to="/reservar?carrito=1" className="boton-secundario">
+          Reservar estos materiales
+        </Link>
       </div>
 
       <p style={{ marginTop: '20px' }}>

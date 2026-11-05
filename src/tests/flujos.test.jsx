@@ -6,6 +6,7 @@ import {
   waitFor,
 } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { webcrypto } from 'node:crypto';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { ProveedorAut } from '../context/ContextoAutenticacion';
 import { ProveedorCarrito, leerCarrito } from '../context/ContextoCarrito';
@@ -20,10 +21,12 @@ import { rutValido } from '../services/validaciones';
 beforeEach(() => {
   localStorage.clear();
   sessionStorage.clear();
+  vi.stubGlobal('crypto', webcrypto);
 });
 afterEach(() => {
   cleanup();
   vi.restoreAllMocks();
+  vi.unstubAllGlobals();
 });
 
 const producto = {
@@ -113,7 +116,7 @@ describe('Acceso a las pantallas', () => {
       <ContextoAut.Provider value={{ usuario: null, cargando: false }}>
         <MemoryRouter initialEntries={['/admin']}>
           <Routes>
-            <Route path="/login" element={<p>Acceso de clientes</p>} />
+            <Route path="/cuentas" element={<p>Acceso de clientes</p>} />
             <Route element={<RutaProtegida />}>
               <Route path="/admin" element={<p>Panel privado</p>} />
             </Route>
@@ -150,13 +153,16 @@ describe('Acceso a las pantallas', () => {
         <MemoryRouter initialEntries={['/login']}>
           <Routes>
             <Route path="/login" element={<Login />} />
-            <Route path="/" element={<p>Sesión iniciada</p>} />
+            <Route path="/cuentas" element={<p>Sesión iniciada</p>} />
           </Routes>
         </MemoryRouter>
       </ProveedorAut>,
     );
     fireEvent.click(
       screen.getByRole('button', { name: 'Registrar cliente de prueba' }),
+    );
+    await waitFor(() =>
+      expect(localStorage.getItem('clientes_los_maestros_v1')).not.toBeNull(),
     );
     fireEvent.change(screen.getByLabelText('Correo electrónico:'), {
       target: { value: 'cliente@example.com' },
