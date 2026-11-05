@@ -1,4 +1,4 @@
-import { useCarrito } from '../context/ContextoCarrito';
+import { useCarrito } from '../context/carrito';
 
 export const ProductCard = (producto) => {
   const { agregarAlCarrito, carrito } = useCarrito();
@@ -17,8 +17,8 @@ export const ProductCard = (producto) => {
       <h3>{nombre}</h3>
       <p className="precio">{precio}</p>
 
-      <p className={`stock ${disponible ? 'disponible' : 'agotado'}`}>
-        {disponible ? `Stock: ${stock} unidades` : 'Agotado (Sin Stock)'}
+      <p className={`stock ${disponible && stock > 0 ? 'disponible' : 'agotado'}`}>
+        {disponible && stock > 0 ? `Stock: ${stock} unidades` : 'Agotado (Sin Stock)'}
       </p>
 
       <button

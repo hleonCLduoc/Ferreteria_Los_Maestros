@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useCarrito } from '../context/ContextoCarrito';
+import { useCarrito } from '../context/carrito';
 
 const formatoPrecio = (valor) =>
   new Intl.NumberFormat('es-CL', {
@@ -114,7 +114,7 @@ export const Carrito = () => {
         </Link>
         
         <button 
-          onClick={() => alert("¡Procesando pago...!")} 
+          onClick={() => alert("Simulación de pago completada. No se realizó ningún cobro.")} 
           style={{ padding: '10px 20px', backgroundColor: '#22c55e', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold' }}
         >
           Ir a Pagar

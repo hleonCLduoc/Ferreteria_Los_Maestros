@@ -1,58 +1,90 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAut } from '../context/ContextoAutenticacion';
-
+import { Link, useNavigate } from 'react-router-dom';
+import { useAut } from '../context/auth';
+import { rutValido } from '../services/validaciones';
 export const Registro = () => {
-  const [razonSocial, setRazonSocial] = useState('');
-  const [rut, setRut] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  
+  const [datos, setDatos] = useState({
+    razonSocial: '',
+    rut: '',
+    email: '',
+    password: '',
+  });
+  const [error, setError] = useState('');
+  const [enviando, setEnviando] = useState(false);
   const { registrarUsuario } = useAut();
   const navigate = useNavigate();
-
-  const handleSubmit = (e) => {
+  const enviar = async (e) => {
     e.preventDefault();
-    
-    //  guardamos al contratista a nuestro contexto
-    registrarUsuario({ razonSocial, rut, email, password });
-    
-    //  lo mandamos al login
-    alert("¡Registro listo! Ahora entra con tus datos.");
-    navigate('/login');
+    setError('');
+    if (!rutValido(datos.rut)) {
+      setError('Revisa el RUT y su dígito verificador.');
+      return;
+    }
+    setEnviando(true);
+    try {
+      await registrarUsuario(datos);
+      navigate('/login', { replace: true });
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setEnviando(false);
+    }
   };
-
   return (
-    <main>
-      <section className="registro">
-        <h2>Registro de Contratistas</h2>
-        <form onSubmit={handleSubmit} className="formulario-contenedor" style={{ textAlign: 'left' }}>
-          
-          <div style={{ marginBottom: '15px' }}>
-            <label htmlFor="razonSocial">Razón Social / Nombre Completo:</label>
-            <input id="razonSocial" type="text" required value={razonSocial} onChange={(e) => setRazonSocial(e.target.value)} style={{ width: '100%', padding: '8px' }} />
+    <section className="registro">
+      <h2>Registro de clientes y contratistas</h2>
+      <form onSubmit={enviar} className="formulario-contenedor">
+        {error && (
+          <p role="alert" className="mensaje error">
+            {error}
+          </p>
+        )}
+        {Object.entries({
+          razonSocial: 'Razón social / Nombre completo',
+          rut: 'RUT',
+          email: 'Correo electrónico',
+          password: 'Contraseña',
+        }).map(([campo, label]) => (
+          <div className="grupo-formulario" key={campo}>
+            <label htmlFor={campo}>{label}</label>
+            <input
+              id={campo}
+              type={
+                campo === 'password'
+                  ? 'password'
+                  : campo === 'email'
+                    ? 'email'
+                    : 'text'
+              }
+              required
+              maxLength={
+                campo === 'password'
+                  ? 72
+                  : campo === 'razonSocial'
+                    ? 150
+                    : campo === 'email'
+                      ? 200
+                      : 12
+              }
+              minLength={campo === 'password' ? 8 : undefined}
+              autoComplete={
+                campo === 'password'
+                  ? 'new-password'
+                  : campo === 'email'
+                    ? 'email'
+                    : undefined
+              }
+              value={datos[campo]}
+              onChange={(e) => setDatos({ ...datos, [campo]: e.target.value })}
+            />
           </div>
-
-          <div style={{ marginBottom: '15px' }}>
-            <label htmlFor="rut">RUT:</label>
-            <input id="rut" type="text" required value={rut} onChange={(e) => setRut(e.target.value)} style={{ width: '100%', padding: '8px' }} />
-          </div>
-
-          <div style={{ marginBottom: '15px' }}>
-            <label htmlFor="email">Correo Electrónico:</label>
-            <input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} style={{ width: '100%', padding: '8px' }} />
-          </div>
-
-          <div style={{ marginBottom: '20px' }}>
-            <label htmlFor="password">Contraseña:</label>
-            <input id="password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} style={{ width: '100%', padding: '8px' }} />
-          </div>
-
-          <button type="submit" style={{ width: '100%', padding: '10px', backgroundColor: '#2563eb', color: 'white', border: 'none', borderRadius: '5px' }}>
-            Registrarme
-          </button>
-        </form>
-      </section>
-    </main>
+        ))}
+        <p>Usa una contraseña de al menos 8 caracteres.</p>
+        <button className="boton-enviar" disabled={enviando}>
+          {enviando ? 'Guardando…' : 'Registrarme'}
+        </button>
+        <Link to="/login">Ya tengo cuenta</Link>
+      </form>
+    </section>
   );
 };

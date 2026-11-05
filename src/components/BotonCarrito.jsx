@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { useCarrito } from '../context/ContextoCarrito';
+import { useCarrito } from '../context/carrito';
 
 export const BotonCarrito = () => {
   const { totalProductos } = useCarrito();

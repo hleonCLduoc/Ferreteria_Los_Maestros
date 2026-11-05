@@ -3,7 +3,7 @@ import { publicaciones } from '../data/publicaciones';
 
 export const Blog = () => {
   return (
-    <main>
+    <>
       <section className="catalogo">
         <h2>Blog y Consejos para Maestros</h2>
         <p>Guías técnicas, recomendaciones de uso de materiales y novedades para tus proyectos:</p>
@@ -28,6 +28,6 @@ export const Blog = () => {
         <h2>¿Tienes dudas con un proyecto en La Serena?</h2>
         <p>Ven a nuestro local en mesón y conversamos directamente sobre los materiales que más te convienen.</p>
       </section>
-    </main>
+    </>
   );
 };

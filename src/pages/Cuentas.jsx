@@ -1,5 +1,5 @@
 import { Navigate, Link } from 'react-router-dom';
-import { useAut } from '../context/ContextoAutenticacion';
+import { useAut } from '../context/auth';
 
 export const Cuentas = () => {
   const { usuario, cerrarSesion } = useAut();
@@ -12,9 +12,9 @@ export const Cuentas = () => {
     new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(valor);
 
   return (
-    <main>
+    <>
       <section className="extracto">
-        <h2>Mi Cuenta Corriente</h2>
+        <h2>Mi Cuenta Corriente</h2><p>Datos de ejemplo para esta demostración.</p>
         <p>Estado de crédito y saldo pendiente para contratistas registrados:</p>
 
         <div className="formulario-contenedor" style={{ textAlign: 'left' }}>
@@ -59,6 +59,6 @@ export const Cuentas = () => {
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 };

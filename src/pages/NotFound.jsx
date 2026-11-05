@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export const NotFound = () => {
   return (
-    <main style={{ padding: '40px', textAlign: 'center' }}>
+    <div style={{ padding: '40px', textAlign: 'center' }}>
       <section className="extracto">
         <h2>404 - Página no encontrada</h2>
         <p>La sección o producto que estás buscando no existe o fue movido.</p>
@@ -12,6 +12,6 @@ export const NotFound = () => {
           </Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 };

@@ -1,50 +1,58 @@
-import { createContext, useState, useContext } from 'react';
-
-const ContextoAut = createContext();
-
+import { useState } from 'react';
+import { ContextoAut } from './auth';
+import { rutValido } from '../services/validaciones';
 export const ProveedorAut = ({ children }) => {
-  // Acá guardamos quién está conectado (si es null, no hay nadie)
   const [usuario, setUsuario] = useState(null);
-  
-  // Nuestra "base de datos" de mentirita para ir guardando a los que se registran
   const [usuariosRegistrados, setUsuariosRegistrados] = useState([]);
-
-  // Función para meter a un nuevo  a la lista
-  const registrarUsuario = (nuevoUsuario) => {
-    setUsuariosRegistrados([...usuariosRegistrados, nuevoUsuario]);
+  const registrarUsuario = (nuevo) => {
+    const email = nuevo.email.trim().toLowerCase();
+    const rut = nuevo.rut.replace(/[.\s-]/g, '').toUpperCase();
+    if (!nuevo.razonSocial.trim() || !rutValido(nuevo.rut))
+      throw new Error('Revisa tu nombre y RUT.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      throw new Error('Ingresa un correo válido.');
+    if (nuevo.password.length < 8)
+      throw new Error('La contraseña debe tener al menos 8 caracteres.');
+    if (
+      usuariosRegistrados.some(
+        (u) =>
+          u.email === email ||
+          u.rut.replace(/[.\s-]/g, '').toUpperCase() === rut,
+      )
+    )
+      throw new Error(
+        'El correo o RUT ya está registrado en esta demostración.',
+      );
+    setUsuariosRegistrados((prev) => [
+      ...prev,
+      { ...nuevo, razonSocial: nuevo.razonSocial.trim(), email },
+    ]);
   };
-  // Función para ver si lo dejamos entrar o no
   const iniciarSesion = (email, password) => {
-    // Buscamos si hay alguien en la lista con ese mismo correo y clave
-    const usuarioEncontrado = usuariosRegistrados.find(
-      (u) => u.email === email && u.password === password
+    const encontrado = usuariosRegistrados.find(
+      (u) => u.email === email.trim().toLowerCase() && u.password === password,
     );
-
-    if (usuarioEncontrado) {
-      // Si existe, le armamos su perfil y le pasamos crédito)
-      setUsuario({
-        razonSocial: usuarioEncontrado.razonSocial,
-        rut: usuarioEncontrado.rut,
-        lineaCredito: 2500000,
-        saldoUtilizado: 0, // Parte limpiecito, sin deudas
-        proximoVencimiento: "30 de Octubre, 2026",
-      });
-      return true; 
-    } else {
-      return false; // Falla no existe o se equivocó de clave
-    }
+    if (!encontrado)
+      throw new Error('Usuario no registrado o credenciales incorrectas.');
+    const fecha = new Date();
+    const vencimiento = new Date(fecha.getFullYear(), fecha.getMonth() + 1, 0);
+    setUsuario({
+      razonSocial: encontrado.razonSocial,
+      rut: encontrado.rut,
+      email: encontrado.email,
+      lineaCredito: 2500000,
+      saldoUtilizado: 0,
+      proximoVencimiento: vencimiento.toLocaleDateString('es-CL'),
+    });
+    return true;
   };
-
-  //  cuando quiera salir
-  const cerrarSesion = () => {
-    setUsuario(null);
-  };
-
+  const cerrarSesion = () => setUsuario(null);
   return (
-    <ContextoAut.Provider value={{ usuario, iniciarSesion, cerrarSesion, registrarUsuario }}>
+    <ContextoAut.Provider
+      value={{ usuario, iniciarSesion, registrarUsuario, cerrarSesion }}
+    >
       {children}
     </ContextoAut.Provider>
   );
 };
-
-export const useAut = () => useContext(ContextoAut);
+export { useAut } from './auth';

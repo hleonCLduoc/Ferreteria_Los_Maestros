@@ -28,9 +28,9 @@ const productoAgotado = {
   imagen: '/assets/img/martillo.jpg',
 };
 
-// ==========================================
 // 1. PRUEBAS DE RENDERIZADO (2 Tests)
-// ==========================================
+
+
 describe('Pruebas de Renderizado', () => {
   it('Test 1: Renderiza el nombre y precio del producto en ProductCard', () => {
     render(
@@ -56,9 +56,11 @@ describe('Pruebas de Renderizado', () => {
   });
 });
 
-// ==========================================
+
+
 // 2. PRUEBAS DE RENDERIZADO CONDICIONAL (2 Tests)
-// ==========================================
+
+
 describe('Pruebas de Renderizado Condicional', () => {
   it('Test 3: Muestra el botón habilitado cuando hay stock disponible', () => {
     render(
@@ -85,9 +87,10 @@ describe('Pruebas de Renderizado Condicional', () => {
   });
 });
 
-// ==========================================
+
 // 3. PRUEBAS DE PROPIEDADES / PROPS (2 Tests)
-// ==========================================
+
+
 describe('Pruebas de Propiedades (Props)', () => {
   it('Test 5: ProductCard recibe y muestra la cantidad de stock correcta vía props', () => {
     render(
@@ -112,9 +115,10 @@ describe('Pruebas de Propiedades (Props)', () => {
   });
 });
 
-// ==========================================
+
 // 4. PRUEBAS DE ESTADO Y EVENTOS (4 Tests)
-// ==========================================
+
+
 describe('Pruebas de Estado y Eventos', () => {
   it('Test 7: Actualiza el estado del input de correo al escribir en el Login', () => {
     render(
@@ -169,3 +173,9 @@ describe('Pruebas de Estado y Eventos', () => {
     expect(() => fireEvent.click(boton)).not.toThrow();
   });
 });
+
+
+/// npm test
+/// npm run coverage
+//npm run dev
+
