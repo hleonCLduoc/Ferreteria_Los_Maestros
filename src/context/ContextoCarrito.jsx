@@ -28,6 +28,7 @@ export const ProveedorCarrito = ({ children, usuarioId = 'invitado' }) => {
       ? 'carrito_ferreteria'
       : `carrito_ferreteria_${usuarioId}`;
   const [guardado, setCarrito] = useState(() => leerCarrito(clave));
+  const [aviso, setAviso] = useState(0);
   const { productos, listo = productos.length > 0 } = useProductos();
   const carrito = listo
     ? guardado
@@ -46,8 +47,16 @@ export const ProveedorCarrito = ({ children, usuarioId = 'invitado' }) => {
       /* El carrito permanece disponible durante esta sesión. */
     }
   }, [clave, guardado]);
+  useEffect(() => {
+    if (!aviso) return;
+    const temporizador = setTimeout(() => setAviso(0), 3000);
+    return () => clearTimeout(temporizador);
+  }, [aviso]);
   const agregarAlCarrito = (producto) => {
     if (!producto.disponible || producto.stock <= 0) return;
+    const cantidad = carrito.find((p) => p.id === producto.id)?.cantidad || 0;
+    if (cantidad >= producto.stock) return;
+    setAviso((actual) => actual + 1);
     setCarrito((prev) => {
       const existe = prev.find((p) => p.id === producto.id);
       return existe
@@ -93,6 +102,9 @@ export const ProveedorCarrito = ({ children, usuarioId = 'invitado' }) => {
       }}
     >
       {children}
+      <div role={aviso ? "status" : undefined} aria-live="polite" aria-atomic="true" className={aviso ? 'aviso-carrito' : undefined}>
+        {aviso ? 'Producto agregado al carrito' : ''}
+      </div>
     </ContextoCarrito.Provider>
   );
 };
